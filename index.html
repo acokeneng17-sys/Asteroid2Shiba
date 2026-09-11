@@ -1,1 +1,214 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>AST2 v5.5 FIX</title><script src="https://telegram.org/js/telegram-web-app.js"></script><style>body{margin:0;background:#05080f;color:#fff;font-family:sans-serif;padding-bottom:80px}.header{background:#0f141c;padding:12px;text-align:center;color:#7fff00;font-weight:900}.card{background:#151e32;margin:10px;border-radius:16px;padding:16px;border:1px solid #1e2d4d}.btn{width:100%;padding:12px;border-radius:10px;border:none;font-weight:800}.btn-g{background:#7fff00;color:#000}.btn-b{background:#2d9cdb;color:#fff}.nav{position:fixed;bottom:0;left:0;right:0;background:#0a0e19;display:flex;border-top:1px solid #1e2d4d}.nav div{flex:1;text-align:center;padding:10px 2px;font-size:10px;color:#8a8f98}.nav div.active{color:#2d9cdb;background:rgba(45,156,219,.1)}.page{display:none}.page.active{display:block}.circle{width:180px;height:180px;border:3px solid #7fff00;border-radius:50%;margin:15px auto;display:flex;flex-direction:column;justify-content:center;align-items:center}</style></head><body><div class="header">AST2 v5.5 ULTRA FIX ✅</div><div id="p-mining" class="page active"><div style="display:flex;justify-content:space-between;padding:10px"><div>TOTAL POINTS<br><b id="tp" style="color:#7fff00">0</b></div><div>AST2<br><b id="ast" style="color:#7fff00">0</b></div></div><div class="circle"><div id="mv" style="font-size:32px;font-weight:900">0.00</div><small id="tm">03:00:00</small></div><div style="padding:0 10px"><button class="btn btn-g" onclick="claim()">Claim (Min 5)</button><div style="height:6px;background:#0f172a;border-radius:3px;margin-top:10px"><div id="pb" style="height:100%;background:#7fff00;width:0%"></div></div></div></div><div id="p-task" class="page"><div class="card"><h3>Tasks TEST</h3><button class="btn btn-b" onclick="addP(500)">Join Telegram +500</button><p id="taskR"></p></div><div class="card"><h3>Spin 3x</h3><button class="btn btn-b" onclick="spin()">SPIN +100</button><p id="spR"></p></div></div><div id="p-ads" class="page"><div class="card" style="text-align:center"><h3>Ads 10x TEST</h3><button id="adB" class="btn btn-b" onclick="watchAd()">WATCH AD +100</button><p id="adR" style="color:#7fff00;font-weight:800"></p><p><span id="adC">0</span>/10</p></div></div><div id="p-wd" class="page"><div class="card"><h4>Swap 1000 = 100 AST2</h4><input id="swIn" type="number" value="1000" style="width:100%;padding:10px;background:#0a1220;border:1px solid #1e2d4d;color:#fff;border-radius:8px"><button class="btn btn-g" style="margin-top:8px" onclick="swap()">Swap</button></div></div><div id="p-ref" class="page"><div class="card"><h3>Referral</h3><div id="refL" style="background:#0a1220;padding:10px;border-radius:8px;font-size:11px">link</div></div></div><div id="p-booster" class="page"><div class="card"><h3>Booster</h3><button class="btn btn-g" onclick="addP(-5000)">Buy 5000 Points</button></div></div><div id="p-profil" class="page"><div class="card"><h3>Profile</h3><p>Test mode OK</p></div></div><div class="nav"><div class="active" id="n-mining" onclick="go('mining')">⛏️<br>Mining</div><div id="n-task" onclick="go('task')">🎯<br>Tasks</div><div id="n-ads" onclick="go('ads')">📺<br>Ads</div><div id="n-wd" onclick="go('wd')">💸<br>WD</div><div id="n-ref" onclick="go('ref')">👥<br>Ref</div><div id="n-booster" onclick="go('booster')">🚀<br>Boost</div><div id="n-profil" onclick="go('profil')">👤<br>Profil</div></div><script>let tp=parseInt(localStorage.getItem('tp')||'0');let ast=parseInt(localStorage.getItem('ast')||'0');let start=parseInt(localStorage.getItem('st')||'0');let acc=0;const MAX=250,DUR=3*60*60*1000;if(!start||Date.now()-start>DUR){start=Date.now();localStorage.setItem('st',start);}let adC=parseInt(localStorage.getItem('adC')||'0');let today=new Date().toDateString();let adD=localStorage.getItem('adD')||'';if(adD!==today){adC=0;localStorage.setItem('adC','0');localStorage.setItem('adD',today);}function upd(){document.getElementById('tp').innerText=tp;document.getElementById('ast').innerText=ast+' AST2';document.getElementById('adC').innerText=adC;let ab=document.getElementById('adB');if(ab)ab.disabled=adC>=10;if(ab)ab.innerText=adC>=10?'LIMIT 10/10':'WATCH AD +100';}function go(p){document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));document.getElementById('p-'+p).classList.add('active');document.querySelectorAll('.nav div').forEach(e=>e.classList.remove('active'));document.getElementById('n-'+p).classList.add('active');}function tick(){let e=Date.now()-start;if(e>DUR)e=DUR;acc=e/DUR*MAX;document.getElementById('mv').innerText=acc.toFixed(2);let r=DUR-e;if(r<0)r=0;let h=Math.floor(r/3600000),m=Math.floor((r%3600000)/60000),s=Math.floor((r%60000)/1000);document.getElementById('tm').innerText=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');document.getElementById('pb').style.width=(e/DUR*100)+'%';}function claim(){if(acc<5){alert('Min 5');return;}tp+=Math.floor(acc);localStorage.setItem('tp',tp);start=Date.now();localStorage.setItem('st',start);upd();alert('Claim '+Math.floor(acc));}function addP(v){tp+=v;localStorage.setItem('tp',tp);upd();}function watchAd(){if(adC>=10){alert('Limit');return;}adC++;tp+=100;localStorage.setItem('adC',adC);localStorage.setItem('tp',tp);localStorage.setItem('adD',today);upd();document.getElementById('adR').innerText='+100 POINTS! '+adC+'/10';}function spin(){tp+=100;localStorage.setItem('tp',tp);upd();}function swap(){let v=parseInt(document.getElementById('swIn').value);if(v>tp){alert('Not enough');return;}tp-=v;ast+=Math.floor(v/10);localStorage.setItem('tp',tp);localStorage.setItem('ast',ast);upd();}setInterval(tick,1000);tick();upd();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Asteroid2Shiba Mini App</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar { width: 6px; }
+        body::-webkit-scrollbar-track { background: #0f172a; }
+        body::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        body::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        /* Hide bottom nav on scroll (optional for immersion) */
+        .hide-nav { transform: translateY(100%); transition: transform 0.3s ease-in-out; }
+        .show-nav { transform: translateY(0); transition: transform 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans selection:bg-cyan-900 pb-20">
+    
+    <!-- Main Container -->
+    <div id="app-container" class="max-w-lg mx-auto relative">
+        
+        <!-- PAGE 1: HOME (Beranda) -->
+        <div id="page-home" class="page-section active-page p-5 space-y-6">
+            <!-- Header -->
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-cyan-300 tracking-tight">ASTEROID2SHIBA</h1>
+                    <p class="text-sm text-gray-400">Welcome to the mission, <span class="font-medium text-white">ShibaPilot</span></p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-black border-2 border-cyan-800 flex items-center justify-center p-1">
+                        <img src="image_33.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat Cards -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-900 p-4 rounded-2xl border border-gray-800">
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">ASTEROID Balance</p>
+                    <div class="flex items-end space-x-1">
+                        <span class="text-3xl font-bold text-white">8.45M</span>
+                        <span class="text-cyan-400 font-medium text-sm">ASTRO</span>
+                    </div>
+                    <p class="text-xs text-green-400 mt-1">+$1,290 (+5.2%)</p>
+                </div>
+                <div class="bg-gray-900 p-4 rounded-2xl border border-gray-800">
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Mining Speed</p>
+                    <div class="flex items-end space-x-1">
+                        <span class="text-3xl font-bold text-white">125</span>
+                        <span class="text-cyan-400 font-medium text-sm">/H</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1">Level 9 Miner</p>
+                </div>
+            </div>
+
+            <!-- Streak Callout -->
+            <div class="bg-gradient-to-r from-gray-900 to-gray-800 p-4 rounded-2xl border border-cyan-500/30 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-black border-4 border-cyan-900 flex items-center justify-center text-cyan-300">
+                        <i class="fas fa-fire fa-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white">Daily Streak Bonus</h4>
+                        <p class="text-xs text-gray-300">Day 7 Active! Next bonus in 4:15:22</p>
+                    </div>
+                </div>
+                <button class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 px-4 py-2 rounded-xl text-sm font-bold flex items-center space-x-1.5 transition">
+                    <i class="fas fa-gift text-xs"></i> <span>Claim</span>
+                </button>
+            </div>
+
+            <!-- Promo Banner -->
+            <div class="bg-cyan-900/50 p-5 rounded-2xl text-center border border-cyan-500/50">
+                 <h3 class="text-xl font-bold text-white">Unlock Galactic Boosters</h3>
+                 <p class="text-sm text-cyan-100 mt-1 mb-4 max-w-sm mx-auto">Upgrade your suit and ship to earn ASTEROID tokens faster. Limited time offer!</p>
+                 <button class="bg-white text-gray-950 px-6 py-3 rounded-xl font-bold text-lg w-full sm:w-auto hover:bg-gray-200 transition">
+                    View Upgrades
+                 </button>
+            </div>
+        </div>
+
+        <!-- PAGE 2: TASKS (Misi) -->
+        <div id="page-tasks" class="page-section p-5 space-y-6 hidden">
+             <h2 class="text-2xl font-extrabold text-white tracking-tight">GALACTIC MISSIONS</h2>
+             <p class="text-gray-400 -mt-3 text-sm">Complete daily tasks to fuel your journey.</p>
+             
+             <!-- Task Filter Tabs -->
+            <div class="flex space-x-2 border-b border-gray-800">
+                <button class="px-4 py-2 border-b-2 border-cyan-400 text-cyan-300 font-semibold text-sm focus:outline-none">Available</button>
+                <button class="px-4 py-2 text-gray-400 font-medium text-sm focus:outline-none">Completed</button>
+            </div>
+
+            <!-- Task List -->
+            <div class="space-y-4">
+                <!-- Task Item 1: Social -->
+                <div class="bg-gray-900 p-4 rounded-xl flex items-center justify-between border border-gray-800 hover:border-cyan-800 transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 text-xl group-hover:text-cyan-400">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-white">Follow @Asteroid2Shiba</h5>
+                            <p class="text-xs text-gray-400">Stay updated on the latest cosmic news.</p>
+                        </div>
+                    </div>
+                    <button class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition">Go</button>
+                </div>
+                 <!-- Task Item 2: Social -->
+                <div class="bg-gray-900 p-4 rounded-xl flex items-center justify-between border border-gray-800 hover:border-cyan-800 transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 text-xl group-hover:text-cyan-400">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-white">Join Community Chat</h5>
+                            <p class="text-xs text-gray-400">Connect with other ShibaPilots.</p>
+                        </div>
+                    </div>
+                    <button class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">Joined</button>
+                </div>
+                <!-- Task Item 3: Ad -->
+                <div class="bg-gray-900 p-4 rounded-xl flex items-center justify-between border border-gray-800 hover:border-cyan-800 transition group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-amber-300 text-xl group-hover:text-amber-200">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-white">Watch Ad for 100 ASTRO</h5>
+                            <p class="text-xs text-gray-400">Boost your earnings instantly.</p>
+                        </div>
+                    </div>
+                    <button class="bg-amber-500 hover:bg-amber-400 text-gray-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">Watch</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: MINING (Simulasi Mining) -->
+        <div id="page-mining" class="page-section p-5 space-y-6 hidden">
+             <h2 class="text-2xl font-extrabold text-white tracking-tight">ASTEROID MINING</h2>
+             <p class="text-gray-400 -mt-3 text-sm">Accumulating ASTRO tokens every second.</p>
+
+             <div class="bg-gray-900 rounded-3xl p-6 border border-gray-800 space-y-5 text-center">
+                <div class="flex justify-between items-center text-xs text-gray-500">
+                    <span>Mining Speed</span>
+                    <span>Level 9</span>
+                </div>
+                <div class="bg-black p-5 rounded-full w-36 h-36 mx-auto border-8 border-cyan-950 shadow-inner relative">
+                    <img src="image_33.png" alt="Mining Shiba" class="w-full h-full object-contain animate-pulse">
+                    <div class="absolute -top-3 -right-3 bg-green-500 w-6 h-6 rounded-full border-4 border-gray-900 animate-ping"></div>
+                </div>
+                
+                <div class="space-y-1">
+                    <p class="text-xs uppercase text-gray-400 tracking-widest">Pending Claim</p>
+                    <h2 class="text-5xl font-extrabold text-white tracking-tighter">542,055</h2>
+                    <p class="text-sm text-cyan-400">≈ $82.50 USD</p>
+                </div>
+
+                <button id="claim-btn" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-extrabold text-xl w-full py-5 rounded-2xl transition transform active:scale-95 shadow-lg shadow-cyan-900/50">
+                   CLAIM REWARD
+                </button>
+                <p class="text-xs text-gray-500">Next automatic mining begins when you claim.</p>
+             </div>
+        </div>
+
+        <!-- PAGE 4: PROFILE & WALLET (Dompet & Profil) -->
+        <div id="page-profile" class="page-section p-5 space-y-6 hidden">
+             <h2 class="text-2xl font-extrabold text-white tracking-tight">PROFILE & WALLET</h2>
+             <p class="text-gray-400 -mt-3 text-sm">Manage your account, wallet, and settings.</p>
+
+            <!-- Wallet Card -->
+            <div class="bg-gradient-to-br from-cyan-950 to-black p-5 rounded-2xl border border-cyan-700">
+                <div class="flex justify-between items-start">
+                     <div>
+                        <p class="text-xs text-cyan-200 uppercase tracking-wider">Connected Wallet</p>
+                        <p class="text-sm text-cyan-100 font-mono mt-1 truncate">UQAB7S…GvNgVJ</p>
+                    </div>
+                    <button class="bg-white/10 hover:bg-white/20 text-cyan-100 text-xs px-3 py-1.5 rounded-lg transition">
+                        <i class="fas fa-exchange-alt mr-1"></i> Change
+                    </button>
+                </div>
+                <button class="mt-4 w-full bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold text-sm py-2.5 rounded-lg transition">Withdraw ASTRO</button>
+            </div>
+
+            <!-- Connection List (Koneksi) -->
+            <div class="bg-gray-900 rounded-xl p-4 border border-gray-800 space-y-3">
+                <h4 class="font-semibold text-white border-b border-gray-700 pb-2">Social Connections</h4>
+                <!-- Conn 1: X -->
+                <div class="flex items-center justify-between p-2 bg-black rounded-lg">
+                     <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded flex items-center justify-center text-gray-400 text-lg"><i class="fa-brands fa-x-twitter"></i></div>
+                        <span class="text-sm text-white">@ShibaPilot_77</span>
+                    </div>
+                    <span class="text-xs text-green-400 font-medium"><i class="fas fa-check-circle mr-1"></i> Connected</span>
+                </div>
+                <!-- Conn 2: Discord (Pending) -->
+                <div class="flex items-center justify-between p-2 bg-black rounded-lg">
+                     <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded flex items-center justify-center text-gray-400 text-lg"><i class="fa-brands fa-discord"></i></div>
+                        <span class="text-sm text-gray-500">Discord</span>
+                    </div>
+                    <button class="bg-cyan-900 text-cyan-200 text-xs px-3 py-1 rounded transition">Connect</button>
+                </div>
+            </div>
+             
+             <!-- Multi-language Selector (Demo) -->
+            <div class="bg-gray-900 rounded-xl p-4 border border-gray-800 space-y-2">
+                 <label for="lang-select" class="block font-semibold text-white text-sm mb-2">App Language</label>
+                 <select id="lang-select" class="w-full bg-black text-white p-3
