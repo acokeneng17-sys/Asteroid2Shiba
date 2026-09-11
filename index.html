@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AST2 Mining - Asteroid2Shiba</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -17,11 +16,10 @@
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans pb-24 selection:bg-cyan-900">
     
-    <!-- ================= AUTH / ONBOARDING MODAL ================= -->
     <div id="auth-modal" class="fixed inset-0 bg-gray-950 z-50 flex items-center justify-center p-4">
         <div class="bg-gray-900 border border-cyan-500/40 p-6 rounded-3xl max-w-sm w-full space-y-4 shadow-2xl text-center">
             <div class="w-16 h-16 rounded-full bg-black border-2 border-cyan-500 mx-auto overflow-hidden flex items-center justify-center">
-                <img id="auth-preview-img" src="image_33.png" alt="Avatar" class="w-full h-full object-cover">
+                <img id="auth-preview-img" src="Screenshot_20260729-141307.jpg" alt="Avatar" class="w-full h-full object-cover">
             </div>
             <div>
                 <h2 class="text-lg font-black text-white">Join Asteroid2Shiba</h2>
@@ -34,7 +32,7 @@
                 </div>
                 <div>
                     <label class="block text-[11px] font-bold text-gray-300 mb-1">Profile Photo URL:</label>
-                    <input type="text" id="auth-input-avatar" value="image_33.png" oninput="document.getElementById('auth-preview-img').src=this.value" placeholder="Image URL" class="w-full bg-black border border-gray-800 text-white text-xs p-3 rounded-xl focus:outline-none focus:border-cyan-500">
+                    <input type="text" id="auth-input-avatar" value="Screenshot_20260729-141307.jpg" oninput="document.getElementById('auth-preview-img').src=this.value" placeholder="Image URL" class="w-full bg-black border border-gray-800 text-white text-xs p-3 rounded-xl focus:outline-none focus:border-cyan-500">
                 </div>
             </div>
             <button onclick="registerAccount()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-extrabold text-xs py-3 rounded-xl transition shadow-lg shadow-cyan-500/30">
@@ -45,24 +43,21 @@
 
     <div id="app-container" class="max-w-md mx-auto relative min-h-screen">
         
-        <!-- TOP HEADER -->
         <header class="p-4 flex justify-between items-center border-b border-gray-900 bg-gray-950/80 backdrop-blur sticky top-0 z-40">
             <div>
                 <span id="txt-app-subtitle" class="text-xs font-bold text-cyan-400 tracking-wider">AST2 MINING</span>
                 <h2 id="txt-app-brand" class="text-lg font-extrabold text-white">ASTEROID2SHIBA</h2>
             </div>
             <div onclick="switchTab('profile')" class="w-9 h-9 rounded-full bg-black border border-cyan-800 flex items-center justify-center overflow-hidden cursor-pointer">
-                <img id="header-avatar" src="image_33.png" alt="Shiba Logo" class="w-full h-full object-cover">
+                <img id="header-avatar" src="Screenshot_20260729-141307.jpg" alt="Shiba Logo" class="w-full h-full object-cover">
             </div>
         </header>
 
-        <!-- ================= PAGE 1: HOME ================= -->
         <div id="page-home" class="tab-content active p-4 space-y-4">
             <div class="flex items-center justify-between">
                 <p class="text-sm text-gray-400"><span id="txt-welcome">Welcome to the mission</span>, <span id="display-username" class="font-medium text-white">ShibaPilot</span></p>
             </div>
 
-            <!-- Stat Cards -->
             <div class="grid grid-cols-2 gap-3">
                 <div class="bg-gray-900/90 p-4 rounded-2xl border border-gray-800 shadow-lg">
                     <p id="txt-mining-points-label" class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">MINING POINTS</p>
@@ -82,7 +77,6 @@
                 </div>
             </div>
 
-            <!-- Streak Callout -->
             <div class="bg-gradient-to-r from-gray-900 to-gray-900/50 p-4 rounded-2xl border border-cyan-500/30 flex items-center justify-between shadow-md">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl bg-black border border-cyan-900 flex items-center justify-center text-cyan-300">
@@ -98,7 +92,6 @@
                 </button>
             </div>
 
-            <!-- Promo Banner -->
             <div class="bg-gradient-to-br from-cyan-950/60 to-gray-900 p-5 rounded-2xl border border-cyan-500/40 text-center space-y-3 shadow-lg">
                  <h3 id="txt-banner-title" class="text-base font-bold text-white">Start New Mining Session</h3>
                  <p id="txt-banner-desc" class="text-xs text-gray-300 max-w-xs mx-auto">Must watch ads every 3 hours to earn 1,000 Points.</p>
@@ -108,13 +101,11 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 2: TASKS ================= -->
         <div id="page-tasks" class="tab-content p-4 space-y-4">
              <h2 id="txt-tasks-header" class="text-xl font-extrabold text-white">GALACTIC MISSIONS</h2>
              <p id="txt-tasks-sub" class="text-xs text-gray-400 -mt-2">Complete social media missions for extra rewards.</p>
              
              <div class="space-y-3 pt-2">
-                <!-- TikTok Follow -->
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
                         <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
@@ -128,7 +119,6 @@
                     <a href="https://tiktok.com/@asteroid2shiba" target="_blank" onclick="completeTask(500, this)" id="btn-task-tiktok" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Follow</a>
                 </div>
 
-                <!-- X Follow -->
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
                         <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
@@ -142,7 +132,6 @@
                     <a href="https://x.com/Asteroid2Shiba" target="_blank" onclick="completeTask(500, this)" id="btn-task-x" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Follow</a>
                 </div>
 
-                <!-- Like & Repost -->
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
                         <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
@@ -156,7 +145,6 @@
                     <a href="https://x.com/Asteroid2Shiba/status/2097965210137206802" target="_blank" onclick="completeTask(500, this)" id="btn-task-repost" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Open</a>
                 </div>
 
-                <!-- Telegram Channel -->
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
                         <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
@@ -170,7 +158,6 @@
                     <a href="https://t.me/asteroid2shiba" target="_blank" onclick="completeTask(500, this)" id="btn-task-tg" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Join</a>
                 </div>
 
-                <!-- YouTube -->
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
                         <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-red-400 text-lg">
@@ -186,14 +173,13 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 3: MINING ================= -->
         <div id="page-mining" class="tab-content p-4 space-y-4 text-center">
              <h2 id="txt-mining-header" class="text-xl font-extrabold text-white">ASTEROID MINING</h2>
              <p id="txt-mining-sub" class="text-xs text-gray-400 -mt-2">Must watch ads every 3 hours to earn 1,000 Points.</p>
 
              <div class="bg-gray-900 rounded-3xl p-5 border border-gray-800 space-y-4 shadow-xl">
-                <div class="w-32 h-32 rounded-full bg-black border-4 border-cyan-950 mx-auto overflow-hidden shadow-inner p-2 relative flex items-center justify-center">
-                    <img src="image_33.png" alt="Shiba Mining" class="w-full h-full object-cover rounded-full animate-pulse">
+                <div class="w-32 h-32 rounded-full bg-black border-4 border-cyan-500/60 mx-auto overflow-hidden shadow-2xl p-1 relative flex items-center justify-center">
+                    <img src="Screenshot_20260729-141307.jpg" alt="Shiba Mining Logo" class="w-full h-full object-cover rounded-full animate-pulse">
                 </div>
                 
                 <div>
@@ -208,26 +194,22 @@
              </div>
         </div>
 
-        <!-- ================= PAGE 4: LEADERBOARD (NEW) ================= -->
         <div id="page-leaderboard" class="tab-content p-4 space-y-4">
             <h2 id="txt-lb-header" class="text-xl font-extrabold text-white">GLOBAL LEADERBOARD</h2>
             <p id="txt-lb-sub" class="text-xs text-gray-400 -mt-2">Top miners in Asteroid2Shiba ecosystem.</p>
 
             <div id="leaderboard-list" class="space-y-2.5 pt-1">
-                <!-- Populated dynamically -->
-            </div>
+                </div>
         </div>
 
-        <!-- ================= PAGE 5: PROFILE & WALLET ================= -->
         <div id="page-profile" class="tab-content p-4 space-y-4">
              <h2 id="txt-profile-header" class="text-xl font-extrabold text-white">PROFILE & WALLET</h2>
              <p id="txt-profile-sub" class="text-xs text-gray-400 -mt-2">Manage your account, referrals, swap, and settings.</p>
 
-            <!-- Edit Profile & Status Card -->
             <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-3">
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 rounded-full bg-cyan-950 border border-cyan-500 flex items-center justify-center overflow-hidden">
-                        <img id="profile-avatar-display" src="image_33.png" alt="User Avatar" class="w-full h-full object-cover">
+                        <img id="profile-avatar-display" src="Screenshot_20260729-141307.jpg" alt="User Avatar" class="w-full h-full object-cover">
                     </div>
                     <div class="flex-1">
                         <p class="text-[10px] text-gray-400 uppercase font-bold" id="txt-username-label">Username</p>
@@ -235,7 +217,6 @@
                     </div>
                 </div>
 
-                <!-- Update Username & Photo Form -->
                 <div class="border-t border-gray-800 pt-3 space-y-2">
                     <p class="text-xs font-bold text-cyan-400" id="txt-edit-profile-title">Edit Profile Details</p>
                     <div class="space-y-2">
@@ -247,7 +228,6 @@
                     </div>
                 </div>
 
-                <!-- Referral Section -->
                 <div class="border-t border-gray-800 pt-3 space-y-2">
                     <div class="flex justify-between items-center text-xs">
                         <span id="txt-ref-link-label" class="text-gray-400">Real Referral Link:</span>
@@ -270,7 +250,6 @@
                 </div>
             </div>
 
-            <!-- Multi-Language Selector -->
             <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-2">
                  <label id="txt-lang-select-label" class="block font-bold text-xs text-gray-300">App Language / Bahasa Aplikasi</label>
                  <select id="lang-select" onchange="changeLanguage(this.value)" class="w-full bg-black border border-gray-800 text-white text-xs p-3 rounded-xl focus:outline-none focus:border-cyan-500">
@@ -282,7 +261,6 @@
                  </select>
             </div>
 
-            <!-- Card Dompet Balance & Swap -->
             <div class="bg-gradient-to-br from-cyan-950 to-gray-900 p-4 rounded-2xl border border-cyan-700 space-y-3">
                 <div class="flex justify-between items-center">
                      <div>
@@ -296,7 +274,6 @@
                 </div>
             </div>
 
-            <!-- Swap Box -->
             <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-3">
                 <h3 id="txt-swap-header" class="font-bold text-sm text-white">Swap Points to AST Token</h3>
                 <p id="txt-swap-rate" class="text-[11px] text-gray-400">Rate: 1,000 Points = 100 AST</p>
@@ -311,7 +288,6 @@
                 </button>
             </div>
 
-            <!-- Withdraw Box -->
             <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-3">
                 <h3 id="txt-withdraw-header" class="font-bold text-sm text-white">AST Token Withdrawal</h3>
                 <p id="txt-withdraw-desc" class="text-[11px] text-amber-400 font-medium">⚠️ Withdrawal button will automatically activate when AST coin officially lists on the market.</p>
@@ -321,7 +297,6 @@
             </div>
         </div>
 
-        <!-- ================= BOTTOM NAVIGATION BAR ================= -->
         <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-gray-950/95 backdrop-blur-md border-t border-gray-900 py-2.5 px-4 flex justify-around items-center text-xs text-gray-400 z-30">
             <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center text-cyan-400 transition">
                 <i class="fas fa-house text-base mb-1"></i>
@@ -347,15 +322,13 @@
 
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // LocalStorage single account enforcement & state management
         let currentUser = JSON.parse(localStorage.getItem('ast_user_account')) || null;
 
         let userPoints = currentUser ? currentUser.points : 6000;
         let userAST = currentUser ? currentUser.ast : 120.5;
         let username = currentUser ? currentUser.username : "ShibaPilot_01";
-        let userAvatar = currentUser ? currentUser.avatar : "image_33.png";
+        let userAvatar = currentUser ? currentUser.avatar : "Screenshot_20260729-141307.jpg";
         let userId = currentUser ? currentUser.id : "user_" + Math.floor(Math.random() * 900000 + 100000);
         let totalReferrals = currentUser ? currentUser.totalReferrals : 2;
         let referralPoints = currentUser ? currentUser.referralPoints : 2000;
@@ -364,13 +337,13 @@
         let countdownTime = 0;
         let currentLang = 'en';
 
-        // Mock global leaderboard database combined with current user
+        // Leaderboard menggunakan logo asli untuk setiap rank
         let leaderboardData = [
-            { rank: 1, name: "CryptoShiba_99", points: 45200, avatar: "image_33.png" },
-            { rank: 2, name: "AsteroidQueen", points: 38400, avatar: "image_33.png" },
-            { rank: 3, name: "ElonPilot", points: 29100, avatar: "image_33.png" },
-            { rank: 4, name: "MoonWalker_X", points: 18500, avatar: "image_33.png" },
-            { rank: 5, name: "ShibaRocket", points: 12300, avatar: "image_33.png" }
+            { rank: 1, name: "CryptoShiba_99", points: 45200, avatar: "Screenshot_20260729-141307.jpg" },
+            { rank: 2, name: "AsteroidQueen", points: 38400, avatar: "Screenshot_20260729-141307.jpg" },
+            { rank: 3, name: "ElonPilot", points: 29100, avatar: "Screenshot_20260729-141307.jpg" },
+            { rank: 4, name: "MoonWalker_X", points: 18500, avatar: "Screenshot_20260729-141307.jpg" },
+            { rank: 5, name: "ShibaRocket", points: 12300, avatar: "Screenshot_20260729-141307.jpg" }
         ];
 
         const translations = {
@@ -483,186 +456,13 @@
                 navMining: "Mining",
                 navLb: "Peringkat",
                 navProfile: "Profil"
-            },
-            ru: {
-                appSubtitle: "AST2 MINING",
-                appBrand: "ASTEROID2SHIBA",
-                welcome: "Добро пожаловать в миссию",
-                miningPointsLabel: "ПОИНТЫ МАЙНИНГА",
-                swapReadyLabel: "Готово к обмену в AST",
-                tokenAstLabel: "ТОКЕН AST",
-                listingSoonLabel: "Скоро листинг",
-                streakTitle: "Бонус серии дней",
-                streakDesc: "День 7 активен!",
-                streakClaim: "Забрать",
-                bannerTitle: "Новая сессия майнинга",
-                bannerDesc: "Смотрите рекламу каждые 3 часа для 1000 поинтов.",
-                bannerAction: "Перейти в майнинг",
-                tasksHeader: "ГАЛАКТИЧЕСКИЕ МИССИИ",
-                tasksSub: "Выполняйте задания соцсетей для наград.",
-                taskTiktok: "Подписаться на TikTok",
-                taskX: "Подписаться на X",
-                taskRepost: "Лайк и репост в X",
-                taskTg: "Канал Telegram",
-                taskYt: "Канал YouTube",
-                miningHeader: "МАЙНИНГ ASTEROID",
-                miningSub: "Смотрите рекламу каждые 3 часа.",
-                miningStatusLabel: "СТАТУС (ЦИКЛ 3 ЧАСА)",
-                miningReady: "Готов к майнингу!",
-                miningDescReady: "Сессию можно начать",
-                miningActive: "Майнинг идет...",
-                btnWatchAds: "СМОТРЕТЬ РЕКЛАМУ (+1,000 PTS)",
-                lbHeader: "ТАБЛИЦА ЛИДЕРОВ",
-                lbSub: "Лучшие майнеры экосистемы.",
-                profileHeader: "ПРОФИЛЬ И КОШЕЛЕК",
-                profileSub: "Управление аккаунтом и настройки.",
-                usernameLabel: "Имя пользователя",
-                editProfileTitle: "Изменить профиль",
-                saveProfileBtn: "Сохранить",
-                refLinkLabel: "Реферальная ссылка:",
-                copyBtn: "Копировать",
-                totalRefLabel: "Всего рефералов",
-                refPointsLabel: "Реферальные очки",
-                langSelectLabel: "Язык приложения",
-                walletPtsLabel: "Ваши поинты",
-                walletAstLabel: "Ваш баланс AST",
-                swapHeader: "Обмен поинтов в AST",
-                swapRate: "Курс: 1,000 поинтов = 100 AST",
-                swapInputLabel: "Введите поинты:",
-                swapAction: "ОБМЕНЯТЬ",
-                withdrawHeader: "Вывод токенов AST",
-                withdrawDesc: "⚠️ Кнопка вывода активируется при листинге.",
-                withdrawLocked: "ВЫВЕСТИ AST (ЗАБЛОКИРОВАНО)",
-                navHome: "Главная",
-                navTasks: "Задачи",
-                navMining: "Майнинг",
-                navLb: "Рейтинг",
-                navProfile: "Профиль"
-            },
-            zh: {
-                appSubtitle: "AST2 MINING",
-                appBrand: "ASTEROID2SHIBA",
-                welcome: "欢迎来到任务",
-                miningPointsLabel: "挖矿积分",
-                swapReadyLabel: "可兑换 AST",
-                tokenAstLabel: "AST 代币",
-                listingSoonLabel: "即将上线",
-                streakTitle: "每日连续奖励",
-                streakDesc: "第 7 天激活！",
-                streakClaim: "领取",
-                bannerTitle: "开启新挖矿",
-                bannerDesc: "每 3 小时观看广告以获得 1,000 积分。",
-                bannerAction: "前往挖矿",
-                tasksHeader: "银河任务",
-                tasksSub: "完成社交媒体任务获得额外奖励。",
-                taskTiktok: "关注 TikTok",
-                taskX: "在 X 上关注",
-                taskRepost: "在 X 上点赞并转发",
-                taskTg: "加入电报频道",
-                taskYt: "订阅 YouTube",
-                miningHeader: "小行星挖矿",
-                miningSub: "每 3 小时观看广告以赚取 1,000 积分。",
-                miningStatusLabel: "挖矿状态 (3小时周期)",
-                miningReady: "准备挖矿！",
-                miningDescReady: "可立即开始新会话",
-                miningActive: "挖矿进行中...",
-                btnWatchAds: "观看广告并挖矿 (+1,000 积分)",
-                lbHeader: "全球排行榜",
-                lbSub: "生态系统中的顶级矿工。",
-                profileHeader: "个人资料与钱包",
-                profileSub: "管理您的账户、推荐和设置。",
-                usernameLabel: "用户名",
-                editProfileTitle: "编辑个人资料",
-                saveProfileBtn: "保存更改",
-                refLinkLabel: "专属推荐链接:",
-                copyBtn: "复制链接",
-                totalRefLabel: "总推荐人数",
-                refPointsLabel: "推荐积分",
-                langSelectLabel: "应用语言 / App Language",
-                walletPtsLabel: "您的积分余额",
-                walletAstLabel: "您的 AST 余额",
-                swapHeader: "兑换积分到 AST 代币",
-                swapRate: "比率: 1,000 积分 = 100 AST",
-                swapInputLabel: "输入要兑换的积分:",
-                swapAction: "立即兑换",
-                withdrawHeader: "AST 代币提现",
-                withdrawDesc: "⚠️ 提现按钮将在 AST 代币正式上线市场时自动激活。",
-                withdrawLocked: "提现 AST (锁定 / 即将上市)",
-                navHome: "首页",
-                navTasks: "任务",
-                navMining: "挖矿",
-                navLb: "排行",
-                navProfile: "我的"
-            },
-            ko: {
-                appSubtitle: "AST2 MINING",
-                appBrand: "ASTEROID2SHIBA",
-                welcome: "임무에 오신 것을 환영합니다",
-                miningPointsLabel: "채굴 포인트",
-                swapReadyLabel: "AST로 교환 가능",
-                tokenAstLabel: "AST 토큰",
-                listingSoonLabel: "상장 예정",
-                streakTitle: "일일 연속 보너스",
-                streakDesc: "7일차 활성화!",
-                streakClaim: "받기",
-                bannerTitle: "새로운 채굴 세션 시작",
-                bannerDesc: "3시간마다 광고를 시청하여 1,000 포인트를 획득하세요.",
-                bannerAction: "채굴 메뉴로 이동",
-                tasksHeader: "은하계 임무",
-                tasksSub: "소셜 미디어 임무를 완료하고 보상을 받으세요.",
-                taskTiktok: "틱톡 팔로우",
-                taskX: "X 팔로우",
-                taskRepost: "X 좋아요 및 리포스트",
-                taskTg: "텔레그램 채널 참여",
-                taskYt: "유튜브 구독",
-                miningHeader: "아스테로이드 채굴",
-                miningSub: "3시간마다 광고 시청 및 1,000 포인트 적립.",
-                miningStatusLabel: "채굴 상태 (3시간 주기)",
-                miningReady: "채굴 준비 완료!",
-                miningDescReady: "지금 새 세션을 시작할 수 있습니다",
-                miningActive: "채굴 진행 중...",
-                btnWatchAds: "광고 시청 및 채굴 (+1,000 PTS)",
-                lbHeader: "글로벌 리더보드",
-                lbSub: "생태계 최고의 채굴자들.",
-                profileHeader: "프로필 및 지갑",
-                profileSub: "계정, 추천, 스왑 및 설정을 관리하세요.",
-                usernameLabel: "사용자 이름",
-                editProfileTitle: "프로필 수정",
-                saveProfileBtn: "변경사항 저장",
-                refLinkLabel: "실제 추천 링크:",
-                copyBtn: "링크 복사",
-                totalRefLabel: "총 추천인",
-                refPointsLabel: "추천 포인트",
-                langSelectLabel: "앱 언어 / App Language",
-                walletPtsLabel: "보유 포인트 잔액",
-                walletAstLabel: "보유 AST 잔액",
-                swapHeader: "포인트를 AST 토큰으로 스왑",
-                swapRate: "비율: 1,000 포인트 = 100 AST",
-                swapInputLabel: "스왑할 포인트 입력:",
-                swapAction: "지금 스왑",
-                withdrawHeader: "AST 토큰 출금",
-                withdrawDesc: "⚠️ AST 코인이 시장에 공식 상장되면 출금 버튼이 자동으로 활성화됩니다.",
-                withdrawLocked: "AST 출금 (잠김 / 상장 임박)",
-                navHome: "홈",
-                navTasks: "임무",
-                navMining: "채굴",
-                navLb: "순위",
-                navProfile: "프로필"
             }
         };
 
-        // Cek apakah sudah terdaftar sebelumnya di perangkat ini (Satu Akun Terenkripsi / Anti-Kecurangan)
         window.onload = function() {
             if (currentUser) {
                 document.getElementById('auth-modal').style.display = 'none';
                 applyUserDataToUI();
-            } else {
-                // Deteksi parameter referral dari URL jika ada (e.g. ?start=ref_12345)
-                const urlParams = new URLSearchParams(window.location.search);
-                const refParam = urlParams.get('start');
-                if (refParam) {
-                    console.log("Joined via referral ID:", refParam);
-                }
             }
             renderLeaderboard();
             updateUI();
@@ -732,7 +532,6 @@
         }
 
         function renderLeaderboard() {
-            // Gabungkan user aktif ke dalam leaderboard list berdasarkan poin
             let fullList = [...leaderboardData, { rank: 0, name: username + " (You)", points: userPoints, avatar: userAvatar, isUser: true }];
             fullList.sort((a, b) => b.points - a.points);
 
