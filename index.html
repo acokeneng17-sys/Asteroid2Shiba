@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AST2 Mining - Asteroid2Shiba</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -19,107 +18,139 @@
     
     <div id="app-container" class="max-w-md mx-auto relative min-h-screen">
         
-        <!-- TOP HEADER (Always Visible) -->
         <header class="p-4 flex justify-between items-center border-b border-gray-900 bg-gray-950/80 backdrop-blur sticky top-0 z-50">
             <div>
-                <span id="txt-app-title" class="text-xs font-bold text-cyan-400 tracking-wider">AST2 MINING</span>
-                <h2 id="txt-brand" class="text-lg font-extrabold text-white">ASTEROID2SHIBA</h2>
+                <span class="text-xs font-bold text-cyan-400 tracking-wider">AST2 MINING</span>
+                <h2 class="text-lg font-extrabold text-white">ASTEROID2SHIBA</h2>
             </div>
             <div class="w-9 h-9 rounded-full bg-black border border-cyan-800 flex items-center justify-center overflow-hidden">
                 <img src="image_33.png" alt="Shiba Logo" class="w-full h-full object-cover">
             </div>
         </header>
 
-        <!-- ================= PAGE 1: HOME ================= -->
         <div id="page-home" class="tab-content active p-4 space-y-4">
             <div class="flex items-center justify-between">
-                <p class="text-sm text-gray-400"><span id="txt-welcome">Welcome to the mission</span>, <span class="font-medium text-white">ShibaPilot</span></p>
+                <p class="text-sm text-gray-400">Welcome to the mission, <span class="font-medium text-white">ShibaPilot</span></p>
             </div>
 
-            <!-- Stat Cards -->
             <div class="grid grid-cols-2 gap-3">
                 <div class="bg-gray-900/90 p-4 rounded-2xl border border-gray-800 shadow-lg">
-                    <p id="txt-balance-label" class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">ASTEROID BALANCE</p>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">POIN MINING</p>
                     <div class="flex items-baseline space-x-1 mt-1">
-                        <span id="balance-amount" class="text-2xl font-black text-white">8.45M</span>
-                        <span class="text-cyan-400 font-bold text-xs">ASTRO</span>
+                        <span id="home-points" class="text-2xl font-black text-white">5,000</span>
+                        <span class="text-cyan-400 font-bold text-xs">PTS</span>
                     </div>
-                    <p class="text-[11px] text-green-400 mt-1 font-medium">+$1,290 (+5.2%)</p>
+                    <p class="text-[11px] text-cyan-400 mt-1 font-medium">Siap diswap ke AST</p>
                 </div>
                 <div class="bg-gray-900/90 p-4 rounded-2xl border border-gray-800 shadow-lg">
-                    <p id="txt-speed-label" class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">MINING SPEED</p>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">TOKEN AST</p>
                     <div class="flex items-baseline space-x-1 mt-1">
-                        <span class="text-2xl font-black text-white">125</span>
-                        <span class="text-cyan-400 font-bold text-xs">/H</span>
+                        <span id="home-ast" class="text-2xl font-black text-white">120.5</span>
+                        <span class="text-cyan-400 font-bold text-xs">AST</span>
                     </div>
-                    <p id="txt-miner-level" class="text-[11px] text-gray-400 mt-1 font-medium">Level 9 Miner</p>
+                    <p class="text-[11px] text-green-400 mt-1 font-medium">Listing Soon</p>
                 </div>
             </div>
 
-            <!-- Streak Callout -->
             <div class="bg-gradient-to-r from-gray-900 to-gray-900/50 p-4 rounded-2xl border border-cyan-500/30 flex items-center justify-between shadow-md">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl bg-black border border-cyan-900 flex items-center justify-center text-cyan-300">
                         <i class="fas fa-fire"></i>
                     </div>
                     <div>
-                        <h4 id="txt-streak-title" class="font-bold text-sm text-white">Daily Streak Bonus</h4>
-                        <p id="txt-streak-desc" class="text-[11px] text-gray-400">Day 7 Active! Next in 4h 15m</p>
+                        <h4 class="font-bold text-sm text-white">Daily Streak Bonus</h4>
+                        <p class="text-[11px] text-gray-400">Day 7 Active!</p>
                     </div>
                 </div>
-                <button onclick="showAlert('Streak already claimed today!')" id="btn-claim-streak" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-md shadow-cyan-500/20">
+                <button onclick="showAlert('Streak sudah diklaim hari ini!')" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 px-3.5 py-2 rounded-xl text-xs font-bold transition">
                     Claim
                 </button>
             </div>
 
-            <!-- Promo Banner -->
             <div class="bg-gradient-to-br from-cyan-950/60 to-gray-900 p-5 rounded-2xl border border-cyan-500/40 text-center space-y-3 shadow-lg">
-                 <h3 id="txt-banner-title" class="text-base font-bold text-white">Unlock Galactic Boosters</h3>
-                 <p id="txt-banner-desc" class="text-xs text-gray-300 max-w-xs mx-auto">Upgrade your suit and ship to earn ASTEROID tokens faster.</p>
-                 <button onclick="switchTab('mining')" id="btn-view-upgrades" class="bg-white hover:bg-gray-200 text-gray-950 px-5 py-2.5 rounded-xl font-bold text-xs w-full transition shadow">
-                    View Upgrades
+                 <h3 class="text-base font-bold text-white">Mulai Sesi Mining Baru</h3>
+                 <p class="text-xs text-gray-300 max-w-xs mx-auto">Wajib tonton iklan setiap 3 jam untuk menghasilkan 1.000 Poin.</p>
+                 <button onclick="switchTab('mining')" class="bg-white hover:bg-gray-200 text-gray-950 px-5 py-2.5 rounded-xl font-bold text-xs w-full transition shadow">
+                    Masuk ke Menu Mining
                  </button>
             </div>
         </div>
 
-        <!-- ================= PAGE 2: TASKS ================= -->
         <div id="page-tasks" class="tab-content p-4 space-y-4">
-             <h2 id="txt-tasks-header" class="text-xl font-extrabold text-white">GALACTIC MISSIONS</h2>
-             <p id="txt-tasks-sub" class="text-xs text-gray-400 -mt-2">Complete tasks to collect extra ASTRO rewards.</p>
+             <h2 class="text-xl font-extrabold text-white">GALACTIC MISSIONS</h2>
+             <p class="text-xs text-gray-400 -mt-2">Selesaikan misi media sosial untuk bonus tambahan.</p>
              
              <div class="space-y-3 pt-2">
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
-                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400">
-                            <i class="fa-brands fa-x-twitter"></i>
+                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
+                            <i class="fa-brands fa-tiktok"></i>
                         </div>
                         <div>
-                            <h5 class="font-bold text-xs text-white">Follow @Asteroid2Shiba</h5>
-                            <p class="text-[10px] text-green-400">+5,000 ASTRO</p>
+                            <h5 class="font-bold text-xs text-white">Follow TikTok</h5>
+                            <p class="text-[10px] text-green-400">+500 Poin</p>
                         </div>
                     </div>
-                    <button onclick="showAlert('Task completed!')" class="bg-cyan-500 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg">Follow</button>
+                    <a href="https://tiktok.com/@asteroid2shiba" target="_blank" onclick="completeTask(500, this)" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Follow</a>
                 </div>
 
                 <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
                     <div class="flex items-center space-x-3">
-                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400">
+                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-xs text-white">Follow @Asteroid2Shiba di X</h5>
+                            <p class="text-[10px] text-green-400">+500 Poin</p>
+                        </div>
+                    </div>
+                    <a href="https://x.com/Asteroid2Shiba" target="_blank" onclick="completeTask(500, this)" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Follow</a>
+                </div>
+
+                <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
+                            <i class="fa-solid fa-retweet"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-xs text-white">Like & Bagikan Ulang Postingan X</h5>
+                            <p class="text-[10px] text-green-400">+500 Poin</p>
+                        </div>
+                    </div>
+                    <a href="https://x.com/Asteroid2Shiba/status/2097965210137206802" target="_blank" onclick="completeTask(500, this)" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Buka</a>
+                </div>
+
+                <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-cyan-400 text-lg">
                             <i class="fa-brands fa-telegram"></i>
                         </div>
                         <div>
-                            <h5 class="font-bold text-xs text-white">Join Telegram Channel</h5>
-                            <p class="text-[10px] text-green-400">+3,000 ASTRO</p>
+                            <h5 class="font-bold text-xs text-white">Join Channel Telegram</h5>
+                            <p class="text-[10px] text-green-400">+500 Poin</p>
                         </div>
                     </div>
-                    <button onclick="showAlert('Redirecting to channel...')" class="bg-cyan-500 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg">Join</button>
+                    <a href="https://t.me/asteroid2shiba" target="_blank" onclick="completeTask(500, this)" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Join</a>
+                </div>
+
+                <div class="bg-gray-900 p-3.5 rounded-xl flex items-center justify-between border border-gray-800">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center text-red-400 text-lg">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-xs text-white">Subscribe YouTube Channel</h5>
+                            <p class="text-[10px] text-green-400">+500 Poin</p>
+                        </div>
+                    </div>
+                    <a href="https://www.youtube.com/@asteroid2shiba" target="_blank" onclick="completeTask(500, this)" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 text-[11px] font-bold px-3 py-1.5 rounded-lg transition">Subscribe</a>
                 </div>
             </div>
         </div>
 
-        <!-- ================= PAGE 3: MINING ================= -->
         <div id="page-mining" class="tab-content p-4 space-y-4 text-center">
-             <h2 id="txt-mining-header" class="text-xl font-extrabold text-white">ASTEROID MINING</h2>
-             <p id="txt-mining-sub" class="text-xs text-gray-400 -mt-2">Accumulating tokens automatically.</p>
+             <h2 class="text-xl font-extrabold text-white">ASTEROID MINING</h2>
+             <p class="text-xs text-gray-400 -mt-2">Wajib tonton iklan setiap 3 jam untuk hasilkan 1.000 Poin.</p>
 
              <div class="bg-gray-900 rounded-3xl p-5 border border-gray-800 space-y-4 shadow-xl">
                 <div class="w-32 h-32 rounded-full bg-black border-4 border-cyan-950 mx-auto overflow-hidden shadow-inner p-2 relative flex items-center justify-center">
@@ -127,75 +158,85 @@
                 </div>
                 
                 <div>
-                    <p id="txt-pending" class="text-[10px] uppercase text-gray-400 tracking-widest font-semibold">PENDING REWARD</p>
-                    <h2 class="text-3xl font-black text-white mt-1">542,055</h2>
-                    <p class="text-xs text-cyan-400 mt-0.5">≈ $82.50 USD</p>
+                    <p class="text-[10px] uppercase text-gray-400 tracking-widest font-semibold">STATUS MINING (SIKLUS 3 JAM)</p>
+                    <h2 id="mining-status-text" class="text-2xl font-black text-cyan-400 mt-1">Siap Mining!</h2>
+                    <p id="timer-display" class="text-xs text-gray-400 mt-1">Sesi baru dapat dimulai sekarang</p>
                 </div>
 
-                <button onclick="showAlert('Reward claimed successfully!')" id="btn-claim-reward" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-extrabold text-base w-full py-3.5 rounded-xl transition shadow-lg shadow-cyan-500/30">
-                   CLAIM REWARD
+                <button onclick="startMiningWithAds()" id="btn-start-mining" class="bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-extrabold text-base w-full py-3.5 rounded-xl transition shadow-lg shadow-cyan-500/30">
+                   <i class="fa-solid fa-play mr-2"></i> TONTON IKLAN & MINING (+1.000 Poin)
                 </button>
              </div>
         </div>
 
-        <!-- ================= PAGE 4: PROFILE & WALLET ================= -->
         <div id="page-profile" class="tab-content p-4 space-y-4">
-             <h2 id="txt-profile-header" class="text-xl font-extrabold text-white">PROFILE & SETTINGS</h2>
-             <p id="txt-profile-sub" class="text-xs text-gray-400 -mt-2">Manage your wallet and app language.</p>
+             <h2 class="text-xl font-extrabold text-white">DOMPET & SWAP POIN</h2>
+             <p class="text-xs text-gray-400 -mt-2">Tukar poin mining jadi AST & siapkan penarikan.</p>
 
-            <!-- Wallet Card -->
             <div class="bg-gradient-to-br from-cyan-950 to-gray-900 p-4 rounded-2xl border border-cyan-700 space-y-3">
                 <div class="flex justify-between items-center">
                      <div>
-                        <p class="text-[10px] text-cyan-300 uppercase font-bold">Connected Wallet</p>
-                        <p class="text-xs text-white font-mono mt-0.5">UQAB7S…GvNgVJ</p>
+                        <p class="text-[10px] text-cyan-300 uppercase font-bold">Saldo Poin Anda</p>
+                        <p id="wallet-points" class="text-lg text-white font-bold">5,000 Poin</p>
                     </div>
-                    <span class="bg-green-500/20 text-green-400 text-[10px] px-2 py-0.5 rounded-full font-bold">Active</span>
+                    <div>
+                        <p class="text-[10px] text-cyan-300 uppercase font-bold">Saldo AST Anda</p>
+                        <p id="wallet-ast" class="text-lg text-white font-bold">120.5 AST</p>
+                    </div>
                 </div>
-                <button onclick="showAlert('Opening wallet withdrawal...')" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold text-xs py-2 rounded-lg transition">
-                    Withdraw ASTRO
+            </div>
+
+            <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-3">
+                <h3 class="font-bold text-sm text-white">Swap Poin ke Token AST</h3>
+                <p class="text-[11px] text-gray-400">Kurs: 1.000 Poin = 100 AST</p>
+                
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">Masukkan Jumlah Poin yang Ingin Diswap:</label>
+                    <input type="number" id="input-swap-points" placeholder="Contoh: 1000" class="w-full bg-black border border-gray-800 text-white text-xs p-3 rounded-xl focus:outline-none focus:border-cyan-500">
+                </div>
+
+                <button onclick="executeSwap()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold text-xs py-3 rounded-xl transition shadow">
+                    SWAP SEKARANG
                 </button>
             </div>
 
-            <!-- Language Selector -->
-            <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-2">
-                 <label id="txt-lang-label" class="block font-bold text-xs text-gray-300">Choose Language / Bahasa / Язык</label>
-                 <select id="lang-select" onchange="changeLanguage(this.value)" class="w-full bg-black border border-gray-800 text-white text-xs p-3 rounded-xl focus:outline-none focus:border-cyan-500">
-                     <option value="en">English</option>
-                     <option value="id">Indonesia</option>
-                     <option value="ru">Русский (Russian)</option>
-                     <option value="zh">中文 (Chinese)</option>
-                     <option value="ko">한국어 (Korean)</option>
-                     <option value="hi">हिन्दी (Indian)</option>
-                 </select>
+            <div class="bg-gray-900 rounded-2xl p-4 border border-gray-800 space-y-3">
+                <h3 class="font-bold text-sm text-white">Penarikan Token AST</h3>
+                <p class="text-[11px] text-amber-400 font-medium">⚠️ Tombol penarikan akan aktif otomatis saat koin AST resmi listing di market.</p>
+                <button onclick="showAlert('Penarikan belum dibuka. Token AST akan bisa ditarik setelah resmi listing!')" class="w-full bg-gray-800 text-gray-500 font-bold text-xs py-3 rounded-xl cursor-not-allowed">
+                    TARIK AST (TERKUNCI / LISTING SOON)
+                </button>
             </div>
         </div>
 
-        <!-- ================= BOTTOM NAVIGATION BAR ================= -->
         <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-gray-950/95 backdrop-blur-md border-t border-gray-900 py-2.5 px-4 flex justify-around items-center text-xs text-gray-400 z-50">
             <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center text-cyan-400 transition">
                 <i class="fas fa-house text-base mb-1"></i>
-                <span id="nav-txt-home" class="text-[10px] font-medium">Home</span>
+                <span class="text-[10px] font-medium">Home</span>
             </button>
             <button onclick="switchTab('tasks')" id="nav-tasks" class="nav-btn flex flex-col items-center hover:text-gray-200 transition">
                 <i class="fas fa-bolt text-base mb-1"></i>
-                <span id="nav-txt-tasks" class="text-[10px] font-medium">Tasks</span>
+                <span class="text-[10px] font-medium">Tasks</span>
             </button>
             <button onclick="switchTab('mining')" id="nav-mining" class="nav-btn flex flex-col items-center hover:text-gray-200 transition">
                 <i class="fas fa-cube text-base mb-1"></i>
-                <span id="nav-txt-mining" class="text-[10px] font-medium">Mining</span>
+                <span class="text-[10px] font-medium">Mining</span>
             </button>
             <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn flex flex-col items-center hover:text-gray-200 transition">
-                <i class="fas fa-user text-base mb-1"></i>
-                <span id="nav-txt-profile" class="text-[10px] font-medium">Profile</span>
+                <i class="fas fa-wallet text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Dompet</span>
             </button>
         </nav>
 
     </div>
 
-    <!-- SIMPLE JAVASCRIPT FOR INTERACTIVITY & MULTI-LANGUAGE -->
     <script>
-        // Tab Switching Logic
+        // Data Global State Aplikasi
+        let userPoints = 5000;
+        let userAST = 120.5;
+        let miningTimerActive = false;
+        let countdownTime = 0; // dalam detik (3 jam = 10800 detik)
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById('page-' + tabId).classList.add('active');
@@ -208,176 +249,115 @@
             event?.currentTarget?.classList?.add('text-cyan-400');
         }
 
-        // Notification Helper
         function showAlert(msg) {
             alert(msg);
         }
 
-        // Multi-Language Translations Dictionary
-        const translations = {
-            en: {
-                welcome: "Welcome to the mission",
-                balanceLabel: "ASTEROID BALANCE",
-                speedLabel: "MINING SPEED",
-                minerLevel: "Level 9 Miner",
-                streakTitle: "Daily Streak Bonus",
-                streakDesc: "Day 7 Active! Next in 4h 15m",
-                claimBtn: "Claim",
-                bannerTitle: "Unlock Galactic Boosters",
-                bannerDesc: "Upgrade your suit and ship to earn ASTEROID tokens faster.",
-                viewUpgrades: "View Upgrades",
-                tasksHeader: "GALACTIC MISSIONS",
-                tasksSub: "Complete tasks to collect extra ASTRO rewards.",
-                miningHeader: "ASTEROID MINING",
-                miningSub: "Accumulating tokens automatically.",
-                pending: "PENDING REWARD",
-                claimReward: "CLAIM REWARD",
-                profileHeader: "PROFILE & SETTINGS",
-                profileSub: "Manage your wallet and app language.",
-                langLabel: "Choose Language / Bahasa / Язык",
-                navHome: "Home", navTasks: "Tasks", navMining: "Mining", navProfile: "Profile"
-            },
-            id: {
-                welcome: "Selamat datang di misi",
-                balanceLabel: "SALDO ASTEROID",
-                speedLabel: "KECEPATAN MINING",
-                minerLevel: "Level 9 Penambang",
-                streakTitle: "Bonus Streak Harian",
-                streakDesc: "Hari ke-7 Aktif! Berikutnya dalam 4j 15m",
-                claimBtn: "Klaim",
-                bannerTitle: "Buka Booster Galaksi",
-                bannerDesc: "Tingkatkan perlengkapanmu untuk hasilkan token lebih cepat.",
-                viewUpgrades: "Lihat Upgrade",
-                tasksHeader: "MISI GALAKSI",
-                tasksSub: "Selesaikan tugas untuk mengumpulkan hadiah ASTRO.",
-                miningHeader: "PENAMBANGAN ASTEROID",
-                miningSub: "Mengumpulkan token secara otomatis.",
-                pending: "PENDIDIKAN / TERTUNDA",
-                claimReward: "KLAIM HADIAH",
-                profileHeader: "PROFIL & PENGATURAN",
-                profileSub: "Kelola dompet dan bahasa aplikasi.",
-                langLabel: "Pilih Bahasa / Language",
-                navHome: "Beranda", navTasks: "Misi", navMining: "Mining", navProfile: "Profil"
-            },
-            ru: {
-                welcome: "Добро пожаловать в миссию",
-                balanceLabel: "БАЛАНС ASTEROID",
-                speedLabel: "СКОРОСТЬ МАЙНИНГА",
-                minerLevel: "Майнер 9 уровня",
-                streakTitle: "Бонус серии дней",
-                streakDesc: "День 7 активен! Следующий через 4ч 15м",
-                claimBtn: "Забрать",
-                bannerTitle: "Галактические бустеры",
-                bannerDesc: "Улучшайте костюм, чтобы зарабатывать быстрее.",
-                viewUpgrades: "Улучшения",
-                tasksHeader: "ГАЛАКТИЧЕСКИЕ МИССИИ",
-                tasksSub: "Выполняйте задания для наград ASTRO.",
-                miningHeader: "МАЙНИНГ ASTEROID",
-                miningSub: "Автоматическое накопление токенов.",
-                pending: "ОЖИДАЕМАЯ НАГРАДА",
-                claimReward: "СОБРАТЬ НАГРАДУ",
-                profileHeader: "ПРОФИЛЬ И НАСТРОЙКИ",
-                profileSub: "Управление кошельком и языком.",
-                langLabel: "Выберите язык / Language",
-                navHome: "Главная", navTasks: "Задачи", navMining: "Майнинг", navProfile: "Профиль"
-            },
-            zh: {
-                welcome: "欢迎来到任务",
-                balanceLabel: "小行星余额",
-                speedLabel: "挖矿速度",
-                minerLevel: "9级矿工",
-                streakTitle: "每日签到奖励",
-                streakDesc: "第 7 天激活！4小时15分钟后重置",
-                claimBtn: "领取",
-                bannerTitle: "解锁星际加速器",
-                bannerDesc: "升级您的装备以更快地赚取代币。",
-                viewUpgrades: "查看升级",
-                tasksHeader: "银河任务",
-                tasksSub: "完成任务收集额外的 ASTRO 奖励。",
-                miningHeader: "小行星挖矿",
-                miningSub: "自动累积代币中。",
-                pending: "待领取奖励",
-                claimReward: "领取奖励",
-                profileHeader: "个人资料与设置",
-                profileSub: "管理您的钱包和应用语言。",
-                langLabel: "选择语言 / Choose Language",
-                navHome: "首页", navTasks: "任务", navMining: "挖矿", navProfile: "我的"
-            },
-            ko: {
-                welcome: "임무에 오신 것을 환영합니다",
-                balanceLabel: "아스테로이드 잔액",
-                speedLabel: "채굴 속도",
-                minerLevel: "레벨 9 마이너",
-                streakTitle: "일일 연속 보너스",
-                streakDesc: "7일차 활성화! 다음 보상까지 4시간 15분",
-                claimBtn: "받기",
-                bannerTitle: "은하계 부스터 잠금 해제",
-                bannerDesc: "장비를 업그레이드하고 토큰을 더 빨리 획득하세요.",
-                viewUpgrades: "업그레이드 보기",
-                tasksHeader: "은하계 임무",
-                tasksSub: "작업을 완료하고 추가 ASTRO 보상을 받으세요.",
-                miningHeader: "아스테로이드 채굴",
-                miningSub: "토큰이 자동으로 적립되는 중입니다.",
-                pending: "대기 중인 보상",
-                claimReward: "보상 받기",
-                profileHeader: "프로필 및 설정",
-                profileSub: "지갑 및 앱 언어를 관리하세요.",
-                langLabel: "언어 선택 / Choose Language",
-                navHome: "홈", navTasks: "임무", navMining: "채굴", navProfile: "프로필"
-            },
-            hi: {
-                welcome: "मिशन में आपका स्वागत है",
-                balanceLabel: "एस्टroid बैलेंस",
-                speedLabel: "माइनिंग स्पीड",
-                minerLevel: "लेवल 9 माइनर",
-                streakTitle: "दैनिक स्ट्रीक बोनस",
-                streakDesc: "दिन 7 सक्रिय! अगला 4 घंटे 15 मिनट में",
-                claimBtn: "दावा करें",
-                bannerTitle: "galactic बूस्टर अनलॉक करें",
-                bannerDesc: "तेजी से टोकन कमाने के लिए अपना सूट अपग्रेड करें।",
-                viewUpgrades: "अपग्रेड देखें",
-                tasksHeader: "गैलेक्टिक मिशन",
-                tasksSub: "अतिरिक्त ASTRO पुरस्कार एकत्र करने के लिए कार्य पूरे करें।",
-                miningHeader: "एस्टेरॉयड माइनिंग",
-                miningSub: "स्वचालित रूप से टोकन जमा हो रहे हैं।",
-                pending: "लंबित पुरस्कार",
-                claimReward: "पुरस्कार दावा करें",
-                profileHeader: "प्रोफाइल और सेटिंग्स",
-                profileSub: "अपना वॉलेट और भाषा प्रबंधित करें।",
-                langLabel: "भाषा चुनें / Choose Language",
-                navHome: "होम", navTasks: "टास्क", navMining: "माइनिंग", navProfile: "प्रोफाइल"
-            }
-        };
-
-        // Language Switcher Function
-        function changeLanguage(lang) {
-            const t = translations[lang] || translations['en'];
-            
-            document.getElementById('txt-welcome').innerText = t.welcome;
-            document.getElementById('txt-balance-label').innerText = t.balanceLabel;
-            document.getElementById('txt-speed-label').innerText = t.speedLabel;
-            document.getElementById('txt-miner-level').innerText = t.minerLevel;
-            document.getElementById('txt-streak-title').innerText = t.streakTitle;
-            document.getElementById('txt-streak-desc').innerText = t.streakDesc;
-            document.getElementById('btn-claim-streak').innerText = t.claimBtn;
-            document.getElementById('txt-banner-title').innerText = t.bannerTitle;
-            document.getElementById('txt-banner-desc').innerText = t.bannerDesc;
-            document.getElementById('btn-view-upgrades').innerText = t.viewUpgrades;
-            document.getElementById('txt-tasks-header').innerText = t.tasksHeader;
-            document.getElementById('txt-tasks-sub').innerText = t.tasksSub;
-            document.getElementById('txt-mining-header').innerText = t.miningHeader;
-            document.getElementById('txt-mining-sub').innerText = t.miningSub;
-            document.getElementById('txt-pending').innerText = t.pending;
-            document.getElementById('btn-claim-reward').innerText = t.claimReward;
-            document.getElementById('txt-profile-header').innerText = t.profileHeader;
-            document.getElementById('txt-profile-sub').innerText = t.profileSub;
-            document.getElementById('txt-lang-label').innerText = t.langLabel;
-            
-            document.getElementById('nav-txt-home').innerText = t.navHome;
-            document.getElementById('nav-txt-tasks').innerText = t.navTasks;
-            document.getElementById('nav-txt-mining').innerText = t.navMining;
-            document.getElementById('nav-txt-profile').innerText = t.navProfile;
+        function updateUI() {
+            document.getElementById('home-points').innerText = userPoints.toLocaleString();
+            document.getElementById('home-ast').innerText = userAST.toLocaleString();
+            document.getElementById('wallet-points').innerText = userPoints.toLocaleString() + " Poin";
+            document.getElementById('wallet-ast').innerText = userAST.toLocaleString() + " AST";
         }
+
+        // Tugas Sosmed (Tambah Poin)
+        function completeTask(reward, element) {
+            userPoints += reward;
+            updateUI();
+            alert(`Berhasil menyelesaikan misi! +${reward} Poin ditambahkan.`);
+            element.innerText = "Selesai";
+            element.classList.remove("bg-cyan-500", "hover:bg-cyan-400", "text-gray-950");
+            element.classList.add("bg-gray-800", "text-gray-400", "cursor-default");
+            element.removeAttribute("onclick");
+        }
+
+        // Fitur Wajib Nonton Iklan + Timer 3 Jam
+        function startMiningWithAds() {
+            if (miningTimerActive) {
+                alert("Sesi mining masih berjalan! Tunggu hingga waktu habis.");
+                return;
+            }
+
+            // Simulasi Nonton Iklan
+            let confirmWatch = confirm("⚠️ Wajib Menonton Iklan!\n\nKlik OK untuk mulai menonton iklan simulasi selama 3 detik demi mendapatkan 1.000 Poin.");
+            if (!confirmWatch) return;
+
+            // Simulasi loading iklan
+            alert("Memutar iklan sponsor... (Simulasi selesai)");
+
+            // Berikan reward +1000 Poin
+            userPoints += 1000;
+            updateUI();
+            alert("Selamat! 1.000 Poin berhasil diklaim dari sesi mining.");
+
+            // Mulai Timer 3 Jam (10800 detik)
+            countdownTime = 10800; 
+            miningTimerActive = true;
+            disableMiningButton();
+
+            let timerInterval = setInterval(() => {
+                countdownTime--;
+                let hours = Math.floor(countdownTime / 3600);
+                let minutes = Math.floor((countdownTime % 3600) / 60);
+                let seconds = countdownTime % 60;
+
+                document.getElementById('timer-display').innerText = `Sesi berikutnya dalam: ${hours}j ${minutes}m ${seconds}d`;
+                document.getElementById('mining-status-text').innerText = "Mining Sedang Berjalan...";
+
+                if (countdownTime <= 0) {
+                    clearInterval(timerInterval);
+                    miningTimerActive = false;
+                    enableMiningButton();
+                }
+            }, 1000);
+        }
+
+        function disableMiningButton() {
+            const btn = document.getElementById('btn-start-mining');
+            btn.disabled = true;
+            btn.className = "bg-gray-800 text-gray-500 font-extrabold text-base w-full py-3.5 rounded-xl cursor-not-allowed";
+        }
+
+        function enableMiningButton() {
+            const btn = document.getElementById('btn-start-mining');
+            btn.disabled = false;
+            btn.className = "bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-extrabold text-base w-full py-3.5 rounded-xl transition shadow-lg shadow-cyan-500/30";
+            document.getElementById('mining-status-text').innerText = "Siap Mining!";
+            document.getElementById('timer-display').innerText = "Sesi baru dapat dimulai sekarang";
+        }
+
+        // Fitur Swap Poin ke AST (1000 Poin = 100 AST)
+        function executeSwap() {
+            const inputVal = parseInt(document.getElementById('input-swap-points').value);
+            
+            if (isNaN(inputVal) || inputVal <= 0) {
+                alert("Masukkan jumlah poin yang valid!");
+                return;
+            }
+
+            if (inputVal > userPoints) {
+                alert("Saldo poin Anda tidak mencukupi!");
+                return;
+            }
+
+            if (inputVal < 1000) {
+                alert("Minimal swap adalah 1.000 Poin!");
+                return;
+            }
+
+            // Hitung konversi: 1000 poin = 100 AST (artinya poin dibagi 10)
+            let astEarned = (inputVal / 1000) * 100;
+
+            userPoints -= inputVal;
+            userAST += astEarned;
+            updateUI();
+
+            document.getElementById('input-swap-points').value = '';
+            alert(`Berhasil menukar ${inputVal} Poin menjadi ${astEarned} AST!`);
+        }
+
+        // Inisialisasi awal
+        updateUI();
     </script>
 </body>
 </html>
