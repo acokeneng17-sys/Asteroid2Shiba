@@ -12,6 +12,15 @@
         body::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+
+        /* Custom Animasi Berputar untuk Logo */
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 10s linear infinite;
+        }
     </style>
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans pb-24 selection:bg-cyan-900">
@@ -179,7 +188,7 @@
 
              <div class="bg-gray-900 rounded-3xl p-5 border border-gray-800 space-y-4 shadow-xl">
                 <div class="w-32 h-32 rounded-full bg-black border-4 border-cyan-500/60 mx-auto overflow-hidden shadow-2xl p-1 relative flex items-center justify-center">
-                    <img src="Screenshot_20260729-141307.jpg" alt="Shiba Mining Logo" class="w-full h-full object-cover rounded-full animate-pulse">
+                    <img id="mining-logo-img" src="Screenshot_20260729-141307.jpg" alt="Shiba Mining Logo" class="w-full h-full object-cover rounded-full animate-spin-slow">
                 </div>
                 
                 <div>
@@ -337,7 +346,6 @@
         let countdownTime = 0;
         let currentLang = 'en';
 
-        // Leaderboard menggunakan logo asli untuk setiap rank
         let leaderboardData = [
             { rank: 1, name: "CryptoShiba_99", points: 45200, avatar: "Screenshot_20260729-141307.jpg" },
             { rank: 2, name: "AsteroidQueen", points: 38400, avatar: "Screenshot_20260729-141307.jpg" },
@@ -635,6 +643,10 @@
             miningTimerActive = true;
             disableMiningButton();
 
+            // Ubah animasi logo menjadi lebih cepat saat mining aktif
+            let logoImg = document.getElementById('mining-logo-img');
+            logoImg.className = "w-full h-full object-cover rounded-full animate-spin";
+
             let timerInterval = setInterval(() => {
                 countdownTime--;
                 let hours = Math.floor(countdownTime / 3600);
@@ -649,6 +661,7 @@
                     clearInterval(timerInterval);
                     miningTimerActive = false;
                     enableMiningButton();
+                    logoImg.className = "w-full h-full object-cover rounded-full animate-spin-slow";
                 }
             }, 1000);
         }
