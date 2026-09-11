@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,7 @@
       --teks-putih: #F8FAFC;
       --abu-lembut: #94A3B8;
       --hijau: #4ADE80;
+      --merah: #F87171;
     }
     body {
       background: linear-gradient(180deg, #0F172A 0%, #1A2744 100%);
@@ -31,7 +32,7 @@
       padding-bottom: 90px;
     }
 
-    /* === ATAS: JUDUL & LOGO === */
+    /* === HEADER === */
     .atas {
       display: flex;
       justify-content: space-between;
@@ -50,7 +51,7 @@
     .logo img { width:100%; height:100%; object-fit:cover; }
     .selamat { color:var(--abu-lembut); font-size:15px; margin-bottom:20px; }
 
-    /* === 2 KOTAK POIN & TOKEN === */
+    /* === 2 BOX POIN & TOKEN === */
     .dua-kotak {
       display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;
     }
@@ -64,12 +65,19 @@
     .kotak-atas .keterangan { font-size:12px; color:var(--hijau); margin-top:4px; }
     .kotak-atas .keterangan.abu { color:var(--abu-lembut); }
 
-    /* === BARIS TUGAS === */
+    /* === COUNTDOWN TIMER === */
+    .kotak-timer {
+      background:rgba(6,182,212,0.1); border-radius:16px; padding:14px;
+      text-align:center; margin-bottom:16px; border:1px solid rgba(6,182,212,0.3);
+    }
+    .timer-teks { font-size:13px; color:var(--abu-lembut); margin-bottom:4px; }
+    .timer-angka { font-size:24px; font-weight:bold; color:var(--biru-terang); letter-spacing:2px; }
+
+    /* === ROW ITEM === */
     .baris {
       background:rgba(30,41,59,0.8); border-radius:16px; padding:16px;
       display:flex; align-items:center; justify-content:space-between;
       margin-bottom:12px; border:1px solid rgba(6,182,212,0.15);
-      transition:0.2s;
     }
     .baris.selesai { opacity:0.7; border-color:var(--hijau); }
     .kiri { display:flex; align-items:center; gap:12px; flex:1; }
@@ -88,37 +96,51 @@
     .tombol-biru:disabled { background:#334155; color:#94A3B8; cursor:not-allowed; }
     .tombol-selesai { background:var(--hijau); }
 
-    /* === MENU BAWAH === */
+    /* === MINING / SPIN BOX === */
+    .kotak-spin {
+      background:rgba(30,41,59,0.8); border-radius:20px; padding:24px 20px;
+      text-align:center; margin-bottom:16px; border:1px solid rgba(6,182,212,0.15);
+    }
+    .kotak-spin h3 { font-size:18px; margin-bottom:8px; }
+    .kotak-spin p { color:var(--abu-lembut); font-size:14px; margin-bottom:16px; }
+    .tombol-panjang {
+      width:100%; padding:14px; border-radius:12px; border:none;
+      background:#fff; color:#000; font-size:16px; font-weight:bold; cursor:pointer;
+      transition:0.2s;
+    }
+    .tombol-panjang:disabled { background:#475569; color:#94A3B8; cursor:not-allowed; }
+    .info-spin { margin-top:10px; font-size:13px; color:var(--biru-cerah); }
+
+    /* === SWAP & WD BOX === */
+    .kotak-swap {
+      background:rgba(30,41,59,0.8); border-radius:16px; padding:20px;
+      margin-bottom:12px; border:1px solid rgba(6,182,212,0.15);
+    }
+    .kotak-swap h4 { margin-bottom:12px; font-size:15px; }
+    .input {
+      width:100%; padding:10px; border-radius:8px; border:1px solid #334155;
+      background:#1E293B; color:#fff; font-size:14px; margin-bottom:10px;
+    }
+    .catatan { font-size:12px; color:var(--abu-lembut); margin-top:6px; }
+
+    /* === HIDE/SHOW PAGES === */
+    .halaman { display:none; }
+    .halaman.aktif { display:block; }
+
+    /* === BOTTOM NAV === */
     .menu-bawah {
       position:fixed; bottom:0; left:0; right:0;
       background:rgba(15,23,42,0.95); display:flex; justify-content:space-around;
       padding:10px 0; border-top:1px solid rgba(6,182,212,0.2);
     }
-    .menu-item { text-align:center; color:var(--abu-lembut); font-size:11px; }
+    .menu-item { text-align:center; color:var(--abu-lembut); font-size:11px; cursor:pointer; }
     .menu-item.aktif { color:var(--biru-cerah); }
     .menu-item .ikon-m { font-size:20px; margin-bottom:2px; }
-
-    /* === BAGIAN MINING === */
-    .bagian-mining {
-      background:rgba(30,41,59,0.8); border-radius:20px; padding:24px 20px;
-      text-align:center; margin-bottom:16px; border:1px solid rgba(6,182,212,0.15);
-    }
-    .bagian-mining h3 { font-size:18px; margin-bottom:8px; }
-    .bagian-mining p { color:var(--abu-lembut); font-size:14px; margin-bottom:16px; }
-    .tombol-panjang {
-      width:100%; padding:14px; border-radius:12px; border:none;
-      background:#fff; color:#000; font-size:16px; font-weight:bold; cursor:pointer;
-    }
-    .tombol-panjang:disabled { background:#475569; color:#94A3B8; }
-
-    /* === SEMBUNYI BAGIAN === */
-    .halaman { display:none; }
-    .halaman.aktif { display:block; }
   </style>
 </head>
 <body>
 
-  <!-- HALAMAN UTAMA -->
+  <!-- ===== HOME PAGE ===== -->
   <div id="halaman-utama" class="halaman aktif">
     <div class="atas">
       <div class="atas-teks">
@@ -126,14 +148,13 @@
         <div class="id">ASTEROID2SHIBA</div>
       </div>
       <div class="logo">
-        <!-- Ganti link di bawah dengan link logo kamu nanti -->
         <img src="https://i.imgur.com/cZ8XQPL.png" alt="Logo">
       </div>
     </div>
 
     <div class="selamat">Welcome to the mission, asteroid member</div>
 
-    <!-- POIN & TOKEN -->
+    <!-- POINTS & TOKEN -->
     <div class="dua-kotak">
       <div class="kotak-atas">
         <div class="label">MINING POINTS</div>
@@ -142,12 +163,18 @@
       </div>
       <div class="kotak-atas">
         <div class="label">AST TOKEN</div>
-        <div class="nilai">0 <span>AST</span></div>
+        <div class="nilai" id="nilaiAst">0 <span>AST</span></div>
         <div class="keterangan abu">Listing Soon</div>
       </div>
     </div>
 
-    <!-- ABSEN HARIAN -->
+    <!-- COUNTDOWN TIMER -->
+    <div class="kotak-timer">
+      <div class="timer-teks">Next Mining Session In</div>
+      <div class="timer-angka" id="hitmundur">03:00:00</div>
+    </div>
+
+    <!-- DAILY CHECK-IN -->
     <div class="baris" id="barisAbsen">
       <div class="kiri">
         <div class="ikon">🔥</div>
@@ -156,122 +183,121 @@
           <div class="teks-kecil" id="teksAbsen">Day 1 Active!</div>
         </div>
       </div>
-      <button class="tombol-biru" id="btnAbsen" onclick="absenHarian()">Claim</button>
-    </div>
-
-    <!-- MINING -->
-    <div class="bagian-mining">
-      <h3>Start New Mining Session</h3>
-      <p>Must complete every 3 hours to earn 1,000 Points.</p>
-      <button class="tombol-panjang" id="btnMining" onclick="mulaiMining()">Go to Mining Menu</button>
-      <p style="margin-top:8px; color:var(--biru-cerah)" id="infoMining"></p>
+      <button class="tombol-biru" id="btnAbsen" onclick="dailyCheckin()">Claim</button>
     </div>
   </div>
 
-  <!-- HALAMAN TUGAS -->
+  <!-- ===== TASKS PAGE ===== -->
   <div id="halaman-tugas" class="halaman">
     <div class="atas">
       <div class="atas-teks">
         <div class="en">TASKS</div>
-        <div class="id">Sosial Media</div>
+        <div class="id">Social Media Tasks</div>
       </div>
     </div>
-    <div style="margin-bottom:16px; color:var(--abu-lembut)">Selesaikan tugas & dapat +2.500 poin masing-masing!</div>
+    <div style="margin-bottom:16px; color:var(--abu-lembut)">Complete tasks & earn +2,500 PTS each!</div>
 
-    <!-- Tugas 1: TikTok -->
     <div class="baris" id="tugasTiktok">
-      <div class="kiri">
-        <div class="ikon">🎵</div>
-        <div>
-          <div class="teks-besar">Follow TikTok</div>
-          <div class="teks-kecil">+2.500 PTS • @asteroid2shiba</div>
-        </div>
-      </div>
-      <button class="tombol-biru" id="btnTiktok" onclick="cekTugas('tiktok')">Check</button>
+      <div class="kiri"><div class="ikon">🎵</div><div><div class="teks-besar">Follow TikTok</div><div class="teks-kecil">+2,500 PTS • @asteroid2shiba</div></div></div>
+      <button class="tombol-biru" id="btnTiktok" onclick="verifyTask('tiktok')">Check</button>
     </div>
-
-    <!-- Tugas 2: X Follow -->
     <div class="baris" id="tugasXfollow">
-      <div class="kiri">
-        <div class="ikon">𝕏</div>
-        <div>
-          <div class="teks-besar">Follow X (Twitter)</div>
-          <div class="teks-kecil">+2.500 PTS • @Asteroid2Shiba</div>
-        </div>
-      </div>
-      <button class="tombol-biru" id="btnXfollow" onclick="cekTugas('xfollow')">Check</button>
+      <div class="kiri"><div class="ikon">𝕏</div><div><div class="teks-besar">Follow X (Twitter)</div><div class="teks-kecil">+2,500 PTS • @Asteroid2Shiba</div></div></div>
+      <button class="tombol-biru" id="btnXfollow" onclick="verifyTask('xfollow')">Check</button>
     </div>
-
-    <!-- Tugas 3: X Like & Repost -->
     <div class="baris" id="tugasXpost">
-      <div class="kiri">
-        <div class="ikon">❤️</div>
-        <div>
-          <div class="teks-besar">Like & Repost Post</div>
-          <div class="teks-kecil">+2.500 PTS • Post Resmi</div>
-        </div>
-      </div>
-      <button class="tombol-biru" id="btnXpost" onclick="cekTugas('xpost')">Check</button>
+      <div class="kiri"><div class="ikon">❤️</div><div><div class="teks-besar">Like & Repost</div><div class="teks-kecil">+2,500 PTS • Official Post</div></div></div>
+      <button class="tombol-biru" id="btnXpost" onclick="verifyTask('xpost')">Check</button>
     </div>
-
-    <!-- Tugas 4: Telegram -->
     <div class="baris" id="tugasTg">
-      <div class="kiri">
-        <div class="ikon">✈️</div>
-        <div>
-          <div class="teks-besar">Join Telegram Channel</div>
-          <div class="teks-kecil">+2.500 PTS • t.me/asteroid2shiba</div>
-        </div>
-      </div>
-      <button class="tombol-biru" id="btnTg" onclick="cekTugas('telegram')">Check</button>
+      <div class="kiri"><div class="ikon">✈️</div><div><div class="teks-besar">Join Telegram</div><div class="teks-kecil">+2,500 PTS • t.me/asteroid2shiba</div></div></div>
+      <button class="tombol-biru" id="btnTg" onclick="verifyTask('telegram')">Check</button>
     </div>
-
-    <!-- Tugas 5: YouTube -->
     <div class="baris" id="tugasYt">
-      <div class="kiri">
-        <div class="ikon">▶️</div>
-        <div>
-          <div class="teks-besar">Subscribe YouTube</div>
-          <div class="teks-kecil">+2.500 PTS • @asteroid2shiba</div>
-        </div>
-      </div>
-      <button class="tombol-biru" id="btnYt" onclick="cekTugas('youtube')">Check</button>
+      <div class="kiri"><div class="ikon">▶️</div><div><div class="teks-besar">Subscribe YouTube</div><div class="teks-kecil">+2,500 PTS • @asteroid2shiba</div></div></div>
+      <button class="tombol-biru" id="btnYt" onclick="verifyTask('youtube')">Check</button>
     </div>
   </div>
 
-  <!-- HALAMAN REFERAL -->
+  <!-- ===== MINING / SPIN PAGE ===== -->
+  <div id="halaman-mining" class="halaman">
+    <div class="atas">
+      <div class="atas-teks">
+        <div class="en">MINING</div>
+        <div class="id">Spin & Earn</div>
+      </div>
+    </div>
+
+    <div class="kotak-spin">
+      <h3>🎡 Spin Wheel</h3>
+      <p>Watch ad before spin. Max 2 spins per day.</p>
+      <button class="tombol-panjang" id="btnSpin" onclick="startSpin()">▶ Watch Ad & Spin</button>
+      <div class="info-spin" id="infoSpin">Spins left today: <span id="sisaSpin">2</span>/2</div>
+    </div>
+  </div>
+
+  <!-- ===== REFERRAL PAGE ===== -->
   <div id="halaman-referal" class="halaman">
     <div class="atas">
       <div class="atas-teks">
         <div class="en">REFERAL</div>
-        <div class="id">Undang Teman</div>
+        <div class="id">Invite Friends</div>
       </div>
     </div>
-    <div class="bagian-mining">
-      <h3>Undang & Dapat 5.000 PTS</h3>
-      <p>Setiap teman yang bergabung lewat link kamu = +5.000 poin!</p>
-      <button class="tombol-panjang" onclick="salinLink()">Salin Link Referal</button>
+
+    <div class="dua-kotak">
+      <div class="kotak-atas">
+        <div class="label">Total Referrals</div>
+        <div class="nilai" id="jumReff">0</div>
+      </div>
+      <div class="kotak-atas">
+        <div class="label">Earned From Referrals</div>
+        <div class="nilai"><span id="poinReff">0</span> <span>PTS</span></div>
+      </div>
+    </div>
+
+    <div class="kotak-spin">
+      <h3>Invite & Earn 5,000 PTS</h3>
+      <p>Each friend who joins via your link = +5,000 PTS!</p>
+      <button class="tombol-panjang" onclick="copyRefLink()">📋 Copy Referral Link</button>
       <p style="margin-top:12px; font-size:12px; color:var(--abu-lembut); word-break:break-all" id="linkReff"></p>
     </div>
   </div>
 
-  <!-- MENU BAWAH -->
+  <!-- ===== PROFILE PAGE ===== -->
+  <div id="halaman-profil" class="halaman">
+    <div class="atas">
+      <div class="atas-teks">
+        <div class="en">PROFILE</div>
+        <div class="id">Account Settings</div>
+      </div>
+    </div>
+
+    <!-- SWAP POINTS TO AST -->
+    <div class="kotak-swap">
+      <h4>🔄 Swap Points to AST</h4>
+      <input type="number" id="inputSwap" class="input" placeholder="Points to swap (1,000 PTS = 1 AST)">
+      <button class="tombol-biru" style="width:100%" onclick="swapToAst()">Swap Now</button>
+      <div class="catatan">Rate: 1,000 PTS = 1 AST Token</div>
+    </div>
+
+    <!-- WITHDRAWAL -->
+    <div class="kotak-swap">
+      <h4>💰 Withdraw AST Token</h4>
+      <input type="text" class="input" placeholder="Wallet Address" id="wdAddress">
+      <input type="number" class="input" placeholder="Amount of AST" id="wdJumlah">
+      <button class="tombol-biru" style="width:100%" id="btnWd" onclick="requestWithdraw()">Request Withdraw</button>
+      <div class="catatan" style="color:var(--merah)">⚠️ Withdrawal opens after listing!</div>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM NAVIGATION ===== -->
   <div class="menu-bawah">
-    <div class="menu-item aktif" onclick="bukaHalaman('utama')">
-      <div class="ikon-m">🏠</div><div>Home</div>
-    </div>
-    <div class="menu-item" onclick="bukaHalaman('tugas')">
-      <div class="ikon-m">📋</div><div>Tasks</div>
-    </div>
-    <div class="menu-item" onclick="bukaHalaman('utama')">
-      <div class="ikon-m">⛏️</div><div>Mining</div>
-    </div>
-    <div class="menu-item" onclick="bukaHalaman('referal')">
-      <div class="ikon-m">🏆</div><div>Referal</div>
-    </div>
-    <div class="menu-item" onclick="bukaHalaman('utama')">
-      <div class="ikon-m">👤</div><div>Profile</div>
-    </div>
+    <div class="menu-item aktif" onclick="openPage('utama')"><div class="ikon-m">🏠</div><div>Home</div></div>
+    <div class="menu-item" onclick="openPage('tugas')"><div class="ikon-m">📋</div><div>Tasks</div></div>
+    <div class="menu-item" onclick="openPage('mining')"><div class="ikon-m">⛏️</div><div>Mining</div></div>
+    <div class="menu-item" onclick="openPage('referal')"><div class="ikon-m">🏆</div><div>Referral</div></div>
+    <div class="menu-item" onclick="openPage('profil')"><div class="ikon-m">👤</div><div>Profile</div></div>
   </div>
 
   <script type="module">
@@ -279,141 +305,210 @@
 
     let userId = "";
     let data = {
-      poin:0, urutAbsen:0, terakhirAbsen:"", terakhirMining:0, pengundang:"",
-      tugasSelesai: { tiktok:false, xfollow:false, xpost:false, telegram:false, youtube:false }
+      poin:0, ast:0, urutAbsen:0, terakhirAbsen:"", terakhirMining:0, pengundang:"",
+      tugasSelesai: { tiktok:false, xfollow:false, xpost:false, telegram:false, youtube:false },
+      spinHariIni:0, tanggalSpin:"", jumReff:0, poinReff:0, riwayatWd:[]
     };
 
-    // === AMBIL ID PENGGUNA ===
-    function ambilUserId() {
+    // Get User ID & Referrer
+    function getUserId() {
       const params = new URLSearchParams(window.location.search);
       const refId = params.get('ref');
-      userId = 'user_' + Math.random().toString(36).substr(2,9);
-      if(refId) data.pengundang = refId;
+      userId = 'user_' + Math.random().toString(36).substr(2,10);
+      if(refId && refId.length>5) data.pengundang = refId;
     }
 
-    // === MUAT DATA DARI DATABASE ===
-    async function muatData() {
-      const simpanan = await bacaData(userId);
-      if(simpanan) {
-        data = { poin:0, urutAbsen:0, terakhirAbsen:"", terakhirMining:0, pengundang:"", tugasSelesai:{} , ...simpanan };
+    // Load Data from Database
+    async function loadData() {
+      const saved = await bacaData(userId);
+      if(saved) {
+        data = { poin:0, ast:0, urutAbsen:0, terakhirAbsen:"", terakhirMining:0, pengundang:"",
+          tugasSelesai:{}, spinHariIni:0, tanggalSpin:"", jumReff:0, poinReff:0, riwayatWd:[], ...saved };
       } else if(data.pengundang) {
-        const p = await bacaData(data.pengundang);
-        if(p) { p.poin = (p.poin||0)+5000; await simpanData(data.pengundang,p); alert("✅ Pengundang mendapat +5.000 poin!"); }
+        // Give bonus to referrer
+        const refData = await bacaData(data.pengundang);
+        if(refData) {
+          refData.poin = (refData.poin||0)+5000;
+          refData.jumReff = (refData.jumReff||0)+1;
+          refData.poinReff = (refData.poinReff||0)+5000;
+          await simpanData(data.pengundang, refData);
+          alert("✅ Welcome! Your referrer received +5,000 PTS!");
+        }
       }
-      tampilPoin(); perbaruiAbsen(); perbaruiMining(); perbaruiTugas();
-      await simpanData(userId,data);
+      resetSpinDaily();
+      updateAllUI();
+      await simpanData(userId, data);
     }
 
-    // === TAMPILKAN POIN ===
-    function tampilPoin(){
-      document.getElementById("poin").textContent = data.poin.toLocaleString();
-    }
-
-    // === ABSEN HARIAN ===
-    window.absenHarian = async function(){
+    // Reset Spin Counter Each New Day
+    function resetSpinDaily() {
       const hariIni = new Date().toLocaleDateString();
-      if(data.terakhirAbsen === hariIni) { alert("⚠️ Sudah absen hari ini!"); return; }
+      if(data.tanggalSpin !== hariIni) {
+        data.spinHariIni = 0;
+        data.tanggalSpin = hariIni;
+      }
+    }
+
+    // ===== COUNTDOWN TIMER =====
+    function startTimer() {
+      setInterval(()=>{
+        const sekarang = Date.now();
+        const tigaJam = 3*60*60*1000;
+        let sisa = tigaJam;
+        if(data.terakhirMining) {
+          const berlalu = sekarang - data.terakhirMining;
+          sisa = Math.max(0, tigaJam - berlalu);
+        }
+        const jam = Math.floor(sisa/3600000);
+        const menit = Math.floor((sisa%3600000)/60000);
+        const detik = Math.floor((sisa%60000)/1000);
+        document.getElementById("hitmundur").textContent =
+          `${String(jam).padStart(2,'0')}:${String(menit).padStart(2,'0')}:${String(detik).padStart(2,'0')}`;
+      }, 1000);
+    }
+
+    // ===== DAILY CHECK-IN =====
+    window.dailyCheckin = async function(){
+      const hariIni = new Date().toLocaleDateString();
+      if(data.terakhirAbsen === hariIni) { alert("⚠️ Already checked in today!"); return; }
       const kemarin = new Date(Date.now()-86400000).toLocaleDateString();
       if(data.terakhirAbsen !== kemarin) data.urutAbsen = 0;
-      data.urutAbsen = Math.min(data.urutAbsen+1,30);
-      data.poin += data.urutAbsen*100; data.terakhirAbsen = hariIni;
-      await simpanData(userId,data); tampilPoin(); perbaruiAbsen();
-      alert(`✅ Absen berhasil! +${data.urutAbsen*100} Poin`);
+      data.urutAbsen = Math.min(data.urutAbsen+1, 30);
+      data.poin += data.urutAbsen * 100;
+      data.terakhirAbsen = hariIni;
+      await simpanData(userId, data);
+      updateAllUI();
+      alert(`✅ Check-in Day ${data.urutAbsen}! +${data.urutAbsen*100} PTS`);
     };
 
-    function perbaruiAbsen(){
-      const hariIni = new Date().toLocaleDateString();
-      document.getElementById("btnAbsen").disabled = data.terakhirAbsen === hariIni;
-      document.getElementById("teksAbsen").textContent = `Day ${data.urutAbsen||1} Active!`;
-    }
+    // ===== SPIN / MINING =====
+    window.startSpin = async function(){
+      if(data.spinHariIni >= 2) { alert("⚠️ Spin limit reached! Try again tomorrow."); return; }
 
-    // === MINING ===
-    window.mulaiMining = async function(){
-      const sekarang = Date.now();
-      const jarak = sekarang - data.terakhirMining;
-      const tigaJam = 3*60*60*1000;
-      if(data.terakhirMining && jarak < tigaJam) {
-        const sisa = Math.ceil((tigaJam - jarak)/60000);
-        document.getElementById("infoMining").textContent = `Tunggu ${sisa} menit lagi`;
-        return;
-      }
-      data.poin += 1000; data.terakhirMining = sekarang;
-      await simpanData(userId,data); tampilPoin(); perbaruiMining();
-      alert("✅ Mining selesai! +1.000 Poin");
+      // Simulate watching ad (2 seconds)
+      const btn = document.getElementById("btnSpin");
+      btn.disabled = true; btn.textContent = "⌛ Watching Ad...";
+
+      setTimeout(async ()=>{
+        // Award points
+        const hadiah = 1000;
+        data.poin += hadiah;
+        data.spinHariIni += 1;
+        data.terakhirMining = Date.now();
+
+        await simpanData(userId, data);
+        updateAllUI();
+        alert(`🎉 Spin successful! You earned +${hadiah} PTS!`);
+      }, 2000);
     };
 
-    function perbaruiMining(){
-      const sekarang = Date.now();
-      const jarak = sekarang - data.terakhirMining;
-      const tigaJam = 3*60*60*1000;
-      if(data.terakhirMining && jarak < tigaJam) {
-        const sisa = Math.ceil((tigaJam - jarak)/60000);
-        document.getElementById("infoMining").textContent = `Siap dalam ${sisa} menit`;
-        document.getElementById("btnMining").disabled = true;
-      } else {
-        document.getElementById("infoMining").textContent = "Siap dimining!";
-        document.getElementById("btnMining").disabled = false;
-      }
-    }
-
-    // === TUGAS SOSMED ===
-    window.cekTugas = async function(jenis){
-      const link = {
+    // ===== VERIFY SOCIAL TASKS =====
+    window.verifyTask = async function(jenis){
+      const links = {
         tiktok:"https://tiktok.com/@asteroid2shiba",
         xfollow:"https://x.com/Asteroid2Shiba",
         xpost:"https://x.com/Asteroid2Shiba/status/2097965210137206802",
         telegram:"https://t.me/asteroid2shiba",
         youtube:"https://www.youtube.com/@asteroid2shiba"
       };
-      window.open(link[jenis], "_blank");
+      window.open(links[jenis], "_blank");
+
       setTimeout(async ()=>{
         if(!data.tugasSelesai[jenis]){
           data.tugasSelesai[jenis] = true;
           data.poin += 2500;
-          await simpanData(userId,data);
-          tampilPoin(); perbaruiTugas();
-          alert("✅ Tugas selesai! +2.500 Poin");
+          await simpanData(userId, data);
+          updateAllUI();
+          alert("✅ Task completed! +2,500 PTS");
         } else {
-          alert("✅ Sudah diklaim sebelumnya!");
+          alert("✅ Already claimed!");
         }
       }, 2000);
     };
 
-    function perbaruiTugas(){
-      for(const k in data.tugasSelesai){
-        if(data.tugasSelesai[k]){
-          const btn = document.getElementById(`btn${k.charAt(0).toUpperCase()+k.slice(1)}`) ||
-                     document.getElementById(`btn${k}`);
-          const baris = document.getElementById(`tugas${k.charAt(0).toUpperCase()+k.slice(1)}`) ||
-                        document.getElementById(`tugas${k}`);
-          if(btn) { btn.textContent="✓ Done"; btn.disabled=true; btn.classList.add("tombol-selesai"); }
-          if(baris) baris.classList.add("selesai");
-        }
-      }
-      // Penyesuaian nama tombol
-      if(data.tugasSelesai.xfollow) { document.getElementById("btnXfollow").textContent="✓ Done"; document.getElementById("btnXfollow").disabled=true; document.getElementById("tugasXfollow").classList.add("selesai"); }
-      if(data.tugasSelesai.xpost) { document.getElementById("btnXpost").textContent="✓ Done"; document.getElementById("btnXpost").disabled=true; document.getElementById("tugasXpost").classList.add("selesai"); }
-    }
-
-    // === SALIN LINK REFERAL ===
-    window.salinLink = function(){
+    // ===== REFERRAL =====
+    window.copyRefLink = function(){
       const link = window.location.origin + window.location.pathname + "?ref=" + userId;
       navigator.clipboard.writeText(link);
       document.getElementById("linkReff").textContent = link;
-      alert("✅ Link disalin! Bagikan ke temanmu!");
+      alert("✅ Referral link copied!");
     };
 
-    // === BUKA HALAMAN ===
-    window.bukaHalaman = function(nama){
+    // ===== SWAP PTS → AST =====
+    window.swapToAst = async function(){
+      const input = document.getElementById("inputSwap").value;
+      const pts = parseInt(input);
+      if(!pts || pts < 1000) { alert("⚠️ Minimum 1,000 PTS to swap!"); return; }
+      if(data.poin < pts) { alert("⚠️ Not enough points!"); return; }
+
+      const ast = Math.floor(pts / 1000);
+      data.poin -= pts;
+      data.ast += ast;
+      await simpanData(userId, data);
+      updateAllUI();
+      alert(`✅ Swapped! -${pts} PTS → +${ast} AST`);
+      document.getElementById("inputSwap").value = "";
+    };
+
+    // ===== WITHDRAWAL REQUEST =====
+    window.requestWithdraw = async function(){
+      const addr = document.getElementById("wdAddress").value.trim();
+      const amt = document.getElementById("wdJumlah").value;
+      if(!addr || !amt) { alert("⚠️ Fill wallet address & amount!"); return; }
+      if(parseFloat(amt) > data.ast) { alert("⚠️ Insufficient AST balance!"); return; }
+      alert("⏳ Withdrawal request saved!\n⚠️ Withdrawal will be processed after listing!");
+    };
+
+    // ===== SWITCH PAGE =====
+    window.openPage = function(nama){
       document.querySelectorAll(".halaman").forEach(h=>h.classList.remove("aktif"));
       document.getElementById(`halaman-${nama}`).classList.add("aktif");
       document.querySelectorAll(".menu-item").forEach(m=>m.classList.remove("aktif"));
       event.currentTarget.classList.add("aktif");
     };
 
-    // === MULAI ===
-    ambilUserId();
-    muatData();
+    // ===== UPDATE ALL INTERFACE =====
+    function updateAllUI(){
+      // Points & AST
+      document.getElementById("poin").textContent = data.poin.toLocaleString() + " PTS";
+      document.getElementById("nilaiAst").textContent = data.ast + " AST";
+
+      // Check-in
+      const hariIni = new Date().toLocaleDateString();
+      document.getElementById("btnAbsen").disabled = data.terakhirAbsen === hariIni;
+      document.getElementById("teksAbsen").textContent = `Day ${data.urutAbsen||1} Active!`;
+
+      // Spin
+      const sisaSpin = 2 - data.spinHariIni;
+      document.getElementById("sisaSpin").textContent = sisaSpin;
+      document.getElementById("btnSpin").disabled = sisaSpin <= 0;
+      document.getElementById("btnSpin").textContent = sisaSpin>0 ? "▶ Watch Ad & Spin" : "✅ Spin Complete";
+
+      // Referral
+      document.getElementById("jumReff").textContent = data.jumReff || 0;
+      document.getElementById("poinReff").textContent = (data.poinReff||0).toLocaleString();
+
+      // Tasks buttons
+      for(const [k,v] of Object.entries(data.tugasSelesai)){
+        if(v){
+          const btnId = {
+            tiktok:"btnTiktok", xfollow:"btnXfollow", xpost:"btnXpost",
+            telegram:"btnTg", youtube:"btnYt"
+          }[k];
+          const barisId = {
+            tiktok:"tugasTiktok", xfollow:"tugasXfollow", xpost:"tugasXpost",
+            telegram:"tugasTg", youtube:"tugasYt"
+          }[k];
+          if(btnId) { document.getElementById(btnId).textContent="✓ Done"; document.getElementById(btnId).disabled=true; }
+          if(barisId) document.getElementById(barisId)?.classList.add("selesai");
+        }
+      }
+    }
+
+    // ===== START APP =====
+    getUserId();
+    loadData();
+    startTimer();
   </script>
 </body>
 </html>
